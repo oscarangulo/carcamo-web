@@ -1,65 +1,263 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import FadeIn from "@/components/FadeIn";
+import { motion } from "framer-motion";
+
+const featuredWorks = [
+  {
+    src: "/images/rumania-caransebes-1.jpeg",
+    title: "Rumania, Caransebes",
+    category: "Obra Pública",
+  },
+  {
+    src: "/images/chile-lampa.jpeg",
+    title: "Chile, Lampa",
+    category: "Obra Pública",
+  },
+  {
+    src: "/images/ecuador-quito-2.jpeg",
+    title: "Ecuador, Quito",
+    category: "Obra Pública",
+  },
+  {
+    src: "/images/escultura.jpeg",
+    title: "Escultura",
+    category: "Fractura / Calce",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/obra-publica.jpeg"
+            alt="Escultura de José Miguel Cárcamo"
+            fill
+            className="object-cover opacity-20"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-cream/60 via-cream/40 to-cream" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+        {/* Hero Content */}
+        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <p className="text-[10px] md:text-xs tracking-[0.4em] uppercase text-warm-gray mb-6 md:mb-8">
+              Escultor &mdash; Santiago de Chile
+            </p>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="text-5xl md:text-7xl lg:text-8xl font-extralight tracking-[0.08em] uppercase leading-[1.1]"
           >
-            Documentation
-          </a>
+            José Miguel
+            <br />
+            Cárcamo
+          </motion.h1>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.9 }}
+            className="mt-10 md:mt-14"
+          >
+            <div className="flex items-center justify-center gap-6 md:gap-10">
+              <div className="h-[1px] w-12 md:w-20 bg-stone" />
+              <p className="text-[11px] md:text-xs tracking-[0.3em] uppercase text-warm-gray font-light">
+                Atemporalidad &middot; Existencia &middot; Materialidad
+              </p>
+              <div className="h-[1px] w-12 md:w-20 bg-stone" />
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+            className="mt-12 md:mt-16"
+          >
+            <Link
+              href="/portafolio"
+              className="inline-block text-[11px] tracking-[0.25em] uppercase border border-charcoal/20 px-10 py-4 hover:bg-charcoal hover:text-cream transition-all duration-500"
+            >
+              Ver Obra
+            </Link>
+          </motion.div>
         </div>
-      </main>
-    </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 1 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            className="w-[1px] h-12 bg-gradient-to-b from-transparent to-warm-gray"
+          />
+        </motion.div>
+      </section>
+
+      {/* Statement Section */}
+      <section className="py-24 md:py-40 px-6">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+            <div className="md:col-span-2">
+              <FadeIn>
+                <p className="text-[10px] tracking-[0.3em] uppercase text-warm-gray">
+                  Sobre el artista
+                </p>
+              </FadeIn>
+            </div>
+            <div className="md:col-span-7 md:col-start-4">
+              <FadeIn delay={0.2}>
+                <p className="text-2xl md:text-3xl lg:text-4xl font-extralight leading-relaxed tracking-wide">
+                  Las propuestas y planteamientos escultóricos se introducen en
+                  los intrincados laberintos del yo interior, donde la materia
+                  se transforma en lenguaje.
+                </p>
+              </FadeIn>
+              <FadeIn delay={0.4}>
+                <div className="mt-10">
+                  <Link
+                    href="/trayectoria"
+                    className="text-[11px] tracking-[0.25em] uppercase text-warm-gray hover:text-charcoal transition-colors duration-300 group"
+                  >
+                    Conocer más
+                    <span className="inline-block ml-3 transition-transform duration-300 group-hover:translate-x-2">
+                      &rarr;
+                    </span>
+                  </Link>
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Works */}
+      <section className="py-12 md:py-24 px-6">
+        <div className="max-w-[1400px] mx-auto">
+          <FadeIn>
+            <div className="flex items-center justify-between mb-16 md:mb-24">
+              <h2 className="text-[10px] tracking-[0.3em] uppercase text-warm-gray">
+                Obras Seleccionadas
+              </h2>
+              <Link
+                href="/portafolio"
+                className="text-[10px] tracking-[0.3em] uppercase text-warm-gray hover:text-charcoal transition-colors duration-300"
+              >
+                Ver todo &rarr;
+              </Link>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            {featuredWorks.map((work, i) => (
+              <FadeIn key={work.title} delay={i * 0.15}>
+                <Link href="/portafolio" className="group block">
+                  <div className="img-zoom aspect-[4/3] relative bg-stone/20">
+                    <Image
+                      src={work.src}
+                      alt={work.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
+                  <div className="mt-4 flex items-baseline justify-between">
+                    <h3 className="text-sm tracking-[0.1em] font-light group-hover:text-warm-gray transition-colors duration-300">
+                      {work.title}
+                    </h3>
+                    <span className="text-[10px] tracking-[0.2em] uppercase text-warm-gray">
+                      {work.category}
+                    </span>
+                  </div>
+                </Link>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Preview */}
+      <section className="py-24 md:py-40 px-6">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+            <FadeIn className="md:col-span-6" direction="left">
+              <div className="img-zoom aspect-[3/4] relative bg-stone/20">
+                <Image
+                  src="/images/natural-coupling-stone.jpeg"
+                  alt="Proceso escultórico"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            </FadeIn>
+            <div className="md:col-span-5 md:col-start-8">
+              <FadeIn delay={0.2}>
+                <p className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-6">
+                  Proceso de Obra
+                </p>
+                <h2 className="text-3xl md:text-4xl font-extralight tracking-wide leading-snug mb-8">
+                  Del boceto a la piedra
+                </h2>
+                <p className="text-sm md:text-base text-warm-gray leading-relaxed mb-10">
+                  Los fundamentos de cada escultura obedecen a un camino
+                  personal de búsqueda en torno al lenguaje matérico. Desde el
+                  diseño en bocetos, la escala y dimensiones, hasta la talla
+                  directa en piedra basalto.
+                </p>
+                <Link
+                  href="/proceso"
+                  className="text-[11px] tracking-[0.25em] uppercase text-warm-gray hover:text-charcoal transition-colors duration-300 group"
+                >
+                  Ver proceso
+                  <span className="inline-block ml-3 transition-transform duration-300 group-hover:translate-x-2">
+                    &rarr;
+                  </span>
+                </Link>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact CTA */}
+      <section className="py-24 md:py-32 px-6 border-t border-stone/30">
+        <div className="max-w-[1400px] mx-auto text-center">
+          <FadeIn>
+            <p className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-8">
+              Contacto
+            </p>
+            <h2 className="text-3xl md:text-5xl font-extralight tracking-wide mb-10">
+              Conversemos sobre su proyecto
+            </h2>
+            <Link
+              href="/contacto"
+              className="inline-block text-[11px] tracking-[0.25em] uppercase border border-charcoal/20 px-10 py-4 hover:bg-charcoal hover:text-cream transition-all duration-500"
+            >
+              Contactar
+            </Link>
+          </FadeIn>
+        </div>
+      </section>
+    </>
   );
 }
