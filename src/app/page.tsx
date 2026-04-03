@@ -31,22 +31,21 @@ const featuredWorks = [
 export default function Home() {
   return (
     <>
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/images/obra-publica.jpeg"
-            alt="Escultura de José Miguel Cárcamo"
+            src="/images/jm-carcamo.png"
+            alt="José Miguel Cárcamo junto a su escultura"
             fill
-            className="object-cover opacity-20"
+            className="object-cover object-top opacity-30"
             priority
+            sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-cream/60 via-cream/40 to-cream" />
+          <div className="absolute inset-0 bg-gradient-to-b from-cream/40 via-cream/30 to-cream" />
         </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -61,11 +60,13 @@ export default function Home() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-extralight tracking-[0.08em] uppercase leading-[1.1]"
+            className="font-heading text-6xl md:text-8xl lg:text-9xl font-light tracking-wide leading-[1.05] italic"
           >
             José Miguel
             <br />
-            Cárcamo
+            <span className="not-italic font-normal tracking-[0.05em]">
+              Cárcamo
+            </span>
           </motion.h1>
 
           <motion.div
@@ -91,19 +92,19 @@ export default function Home() {
           >
             <Link
               href="/portafolio"
-              className="inline-block text-[11px] tracking-[0.25em] uppercase border border-charcoal/20 px-10 py-4 hover:bg-charcoal hover:text-cream transition-all duration-500"
+              className="inline-block text-[11px] tracking-[0.25em] uppercase border border-charcoal/20 px-10 py-4 hover:bg-charcoal hover:text-cream transition-all duration-500 cursor-pointer"
             >
               Ver Obra
             </Link>
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          aria-hidden="true"
         >
           <motion.div
             animate={{ y: [0, 8, 0] }}
@@ -113,7 +114,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Statement Section */}
+      {/* Statement */}
       <section className="py-24 md:py-40 px-6">
         <div className="max-w-[1400px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
@@ -126,17 +127,17 @@ export default function Home() {
             </div>
             <div className="md:col-span-7 md:col-start-4">
               <FadeIn delay={0.2}>
-                <p className="text-2xl md:text-3xl lg:text-4xl font-extralight leading-relaxed tracking-wide">
+                <blockquote className="font-heading text-3xl md:text-4xl lg:text-[2.75rem] font-light leading-relaxed tracking-wide italic">
                   Las propuestas y planteamientos escultóricos se introducen en
                   los intrincados laberintos del yo interior, donde la materia
                   se transforma en lenguaje.
-                </p>
+                </blockquote>
               </FadeIn>
               <FadeIn delay={0.4}>
                 <div className="mt-10">
                   <Link
                     href="/trayectoria"
-                    className="text-[11px] tracking-[0.25em] uppercase text-warm-gray hover:text-charcoal transition-colors duration-300 group"
+                    className="text-[11px] tracking-[0.25em] uppercase text-warm-gray hover:text-charcoal transition-colors duration-300 group cursor-pointer"
                   >
                     Conocer más
                     <span className="inline-block ml-3 transition-transform duration-300 group-hover:translate-x-2">
@@ -160,7 +161,7 @@ export default function Home() {
               </h2>
               <Link
                 href="/portafolio"
-                className="text-[10px] tracking-[0.3em] uppercase text-warm-gray hover:text-charcoal transition-colors duration-300"
+                className="text-[10px] tracking-[0.3em] uppercase text-warm-gray hover:text-charcoal transition-colors duration-300 cursor-pointer"
               >
                 Ver todo &rarr;
               </Link>
@@ -170,11 +171,11 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {featuredWorks.map((work, i) => (
               <FadeIn key={work.title} delay={i * 0.15}>
-                <Link href="/portafolio" className="group block">
+                <Link href="/portafolio" className="group block cursor-pointer">
                   <div className="img-zoom aspect-[4/3] relative bg-stone/20">
                     <Image
                       src={work.src}
-                      alt={work.title}
+                      alt={`${work.title} — ${work.category}`}
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
@@ -203,7 +204,7 @@ export default function Home() {
               <div className="img-zoom aspect-[3/4] relative bg-stone/20">
                 <Image
                   src="/images/natural-coupling-stone.jpeg"
-                  alt="Proceso escultórico"
+                  alt="Natural Coupling Stone — Proceso escultórico en piedra basalto"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -215,7 +216,7 @@ export default function Home() {
                 <p className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-6">
                   Proceso de Obra
                 </p>
-                <h2 className="text-3xl md:text-4xl font-extralight tracking-wide leading-snug mb-8">
+                <h2 className="font-heading text-4xl md:text-5xl font-light tracking-wide leading-snug italic mb-8">
                   Del boceto a la piedra
                 </h2>
                 <p className="text-sm md:text-base text-warm-gray leading-relaxed mb-10">
@@ -226,7 +227,7 @@ export default function Home() {
                 </p>
                 <Link
                   href="/proceso"
-                  className="text-[11px] tracking-[0.25em] uppercase text-warm-gray hover:text-charcoal transition-colors duration-300 group"
+                  className="text-[11px] tracking-[0.25em] uppercase text-warm-gray hover:text-charcoal transition-colors duration-300 group cursor-pointer"
                 >
                   Ver proceso
                   <span className="inline-block ml-3 transition-transform duration-300 group-hover:translate-x-2">
@@ -246,12 +247,12 @@ export default function Home() {
             <p className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-8">
               Contacto
             </p>
-            <h2 className="text-3xl md:text-5xl font-extralight tracking-wide mb-10">
+            <h2 className="font-heading text-4xl md:text-6xl font-light tracking-wide italic mb-10">
               Conversemos sobre su proyecto
             </h2>
             <Link
               href="/contacto"
-              className="inline-block text-[11px] tracking-[0.25em] uppercase border border-charcoal/20 px-10 py-4 hover:bg-charcoal hover:text-cream transition-all duration-500"
+              className="inline-block text-[11px] tracking-[0.25em] uppercase border border-charcoal/20 px-10 py-4 hover:bg-charcoal hover:text-cream transition-all duration-500 cursor-pointer"
             >
               Contactar
             </Link>

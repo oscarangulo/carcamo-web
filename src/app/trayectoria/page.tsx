@@ -37,12 +37,12 @@ export default function Trayectoria() {
                 <p className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-4">
                   Trayectoria
                 </p>
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-extralight tracking-[0.05em] uppercase leading-[1.1]">
+                <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-light tracking-wide leading-[1.1] italic">
                   Más de 25 años
                   <br />
                   dedicados a la
                   <br />
-                  escultura
+                  <span className="not-italic font-normal">escultura</span>
                 </h1>
               </FadeIn>
             </div>
@@ -50,24 +50,25 @@ export default function Trayectoria() {
         </div>
       </section>
 
-      {/* Bio Section */}
+      {/* Bio */}
       <section className="py-16 md:py-24 px-6">
         <div className="max-w-[1400px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-start">
             <FadeIn className="md:col-span-5" direction="left">
               <div className="aspect-[3/4] relative bg-stone/20 sticky top-32">
                 <Image
-                  src="/images/rumania-caransebes-1.jpeg"
-                  alt="José Miguel Cárcamo Fonseca — Escultura"
+                  src="/images/jm-carcamo.png"
+                  alt="José Miguel Cárcamo Fonseca — Escultor chileno junto a su obra"
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                   sizes="(max-width: 768px) 100vw, 40vw"
+                  priority
                 />
               </div>
             </FadeIn>
             <div className="md:col-span-6 md:col-start-7">
               <FadeIn delay={0.2}>
-                <h2 className="text-2xl md:text-3xl font-extralight tracking-wide leading-relaxed mb-8">
+                <h2 className="font-heading text-3xl md:text-4xl font-light tracking-wide italic leading-relaxed mb-8">
                   José Miguel Cárcamo Fonseca
                 </h2>
                 <div className="space-y-6 text-sm md:text-base text-warm-gray leading-relaxed">
@@ -133,7 +134,7 @@ export default function Trayectoria() {
                     </span>
                   </div>
                   <div className="col-span-10 md:col-span-4">
-                    <span className="text-sm md:text-base font-light tracking-wide group-hover:text-warm-gray transition-colors">
+                    <span className="font-heading text-base md:text-lg font-normal italic tracking-wide group-hover:text-warm-gray transition-colors">
                       {ex.title}
                     </span>
                   </div>
@@ -179,7 +180,7 @@ export default function Trayectoria() {
         </div>
       </section>
 
-      {/* International Presence Map */}
+      {/* International Presence */}
       <section className="py-24 md:py-40 px-6 border-t border-stone/30">
         <div className="max-w-[1400px] mx-auto text-center">
           <FadeIn>
@@ -188,23 +189,13 @@ export default function Trayectoria() {
             </p>
             <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 max-w-3xl mx-auto">
               {[
-                "Chile",
-                "México",
-                "Brasil",
-                "Argentina",
-                "Ecuador",
-                "Perú",
-                "Bolivia",
-                "Colombia",
-                "El Salvador",
-                "Uruguay",
-                "Irán",
-                "Rumania",
-                "Chipre",
+                "Chile", "México", "Brasil", "Argentina", "Ecuador",
+                "Perú", "Bolivia", "Colombia", "El Salvador", "Uruguay",
+                "Irán", "Rumania", "Chipre",
               ].map((country) => (
                 <span
                   key={country}
-                  className="text-lg md:text-xl font-extralight tracking-wide text-warm-gray"
+                  className="font-heading text-xl md:text-2xl font-light italic tracking-wide text-warm-gray"
                 >
                   {country}
                 </span>

@@ -8,8 +8,10 @@
   --color-charcoal: #1a1a1a;
   --color-stone: #d4cec8;
   --color-accent: #2c2c2c;
+  --color-muted: #64748b;
+  --color-border: #e4e4e7;
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-cormorant);
 }
 
 :root {
@@ -25,6 +27,20 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -38,56 +54,54 @@ body {
   color: #fffff8;
 }
 
-/* Custom scrollbar */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
-
 ::-webkit-scrollbar-track {
   background: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
   background: #d4cec8;
   border-radius: 3px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: #8a8580;
-}
-
-/* Page transition */
-.page-enter {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.page-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 /* Image hover zoom */
 .img-zoom {
   overflow: hidden;
 }
-
 .img-zoom img {
   transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-
 .img-zoom:hover img {
   transform: scale(1.05);
 }
 
-/* Horizontal rule style */
+@media (prefers-reduced-motion: reduce) {
+  .img-zoom img {
+    transition: none;
+  }
+  .img-zoom:hover img {
+    transform: none;
+  }
+}
+
+/* Horizontal rule */
 hr {
   border: none;
   border-top: 1px solid #d4cec8;
 }
 
-/* Letter spacing utility */
-.tracking-widest-xl {
-  letter-spacing: 0.25em;
+/* Focus ring for accessibility */
+:focus-visible {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 2px;
+}
+
+/* Serif headings utility */
+.font-heading {
+  font-family: var(--font-serif, "Cormorant", Georgia, serif);
 }
