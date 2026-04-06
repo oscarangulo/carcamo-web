@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | José Miguel Cárcamo",
   },
   description:
-    "Escultor chileno con más de 25 años dedicados a la escultura en piedra basalto. Atemporalidad, Existencia, Materialidad. Obra pública internacional en más de 13 países.",
+    "Escultor chileno con más de 25 años dedicados a la escultura en piedra basalto. Obra pública internacional en más de 13 países.",
   keywords: [
     "escultor chileno",
     "escultura en piedra",
@@ -72,9 +72,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  alternates: {
-    canonical: "https://www.jmcarcamo.cl",
   },
 };
 
