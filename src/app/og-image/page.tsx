@@ -38,29 +38,29 @@ export default function OGImage() {
           background: "#1a1a1a",
         }}
       >
-        {/* Background Image */}
+        {/* Background Image - shifted right */}
         <img
           src="/images/jm-carcamo.png"
           alt=""
           style={{
             position: "absolute",
             top: 0,
-            left: 0,
-            width: "100%",
+            right: 0,
+            width: "70%",
             height: "100%",
             objectFit: "cover",
             objectPosition: "center top",
-            opacity: 0.45,
+            opacity: 0.5,
           }}
         />
 
-        {/* Gradient overlays */}
+        {/* Gradient overlays - stronger on left for text readability */}
         <div
           style={{
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(135deg, rgba(26,26,26,0.85) 0%, rgba(26,26,26,0.4) 50%, rgba(26,26,26,0.7) 100%)",
+              "linear-gradient(to right, rgba(26,26,26,0.95) 0%, rgba(26,26,26,0.85) 35%, rgba(26,26,26,0.3) 70%, rgba(26,26,26,0.5) 100%)",
           }}
         />
         <div
@@ -71,7 +71,7 @@ export default function OGImage() {
             right: 0,
             height: "50%",
             background:
-              "linear-gradient(to top, rgba(26,26,26,0.9) 0%, transparent 100%)",
+              "linear-gradient(to top, rgba(26,26,26,0.85) 0%, transparent 100%)",
           }}
         />
 
