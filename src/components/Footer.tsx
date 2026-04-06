@@ -31,6 +31,7 @@ export default function Footer() {
                 { href: "/portafolio", label: "Portafolio" },
                 { href: "/proceso", label: "Proceso de Obra" },
                 { href: "/bocetos", label: "Bocetos" },
+                { href: "/prensa", label: "Prensa" },
                 { href: "/contacto", label: "Contacto" },
               ].map((item) => (
                 <Link

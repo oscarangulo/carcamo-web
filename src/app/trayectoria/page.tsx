@@ -12,7 +12,25 @@ const exhibitions = [
   { year: "1993", title: "Esculturas", venue: "Galería Arte Actual La Dehesa" },
 ];
 
+const collectiveExhibitions = [
+  { year: "2022", title: "Colectiva", venue: "Centro Cultural Los Andes" },
+  { year: "2019", title: "Jardín de las Esculturas", venue: "Universidad Andrés Bello, Casona de Las Condes" },
+  { year: "2018", title: "Tributo a Rodríguez Castelo", venue: "Casa de la Cultura Ecuatoriana, Quito, Ecuador" },
+  { year: "2017", title: "Viajeros del Sur", venue: "Museo El Dorado, Misiones, Argentina" },
+  { year: "2016", title: "Viajeros del Sur", venue: "Museo Luis Perlotti, Buenos Aires, Argentina" },
+  { year: "2014", title: "Frontis Museo Nacional de Bellas Artes", venue: "Simposio Parque Peñalolén" },
+  { year: "2013", title: "III Simposio Internacional de Escultura Monumental", venue: "Casa de la Cultura Ecuatoriana, Quito" },
+  { year: "2012", title: "Escultura en Hielo", venue: "Valle Nevado, Santiago" },
+  { year: "2009", title: "El Día de Europa", venue: "Embajada de Rumania" },
+  { year: "2007", title: "Laberintos de amor y erotismo", venue: "Casona Nemesio Antúnez" },
+  { year: "2006", title: "PIEDRA", venue: "Soech, Biblioteca de Santiago" },
+  { year: "2001", title: "Nueva Abstracción", venue: "Galería Praxis" },
+  { year: "2000", title: "Grandes Escultores", venue: "Club de Golf, Valle Escondido" },
+  { year: "1996", title: "Arte Internacional Casapieda", venue: "Praxis — EEUU, México, Brasil, Argentina, Perú, Chile" },
+];
+
 const symposiums = [
+  { year: "2026", location: "Arabia Saudita — Riad" },
   { year: "2023", location: "México — Valle de Guadalupe" },
   { year: "2022", location: "Chile — San Pedro de Atacama (Residencia)" },
   { year: "2021", location: "Brasil — Jaraguá do Sul" },
@@ -23,6 +41,14 @@ const symposiums = [
   { year: "2015", location: "Ecuador / Chile / Brasil / Chipre" },
   { year: "2014", location: "Bolivia / Chile — Parque Peñalolén" },
   { year: "2013", location: "Ecuador — Quito" },
+];
+
+const obraPublica = [
+  { year: "1997", description: "Parque privado, arquitecto Christian Boza, Los Vilos" },
+  { year: "1996", description: "Hotel Marriott, Santiago, Chile" },
+  { year: "1996", description: "Hospital Roberto del Río — Banca Escultórica, Fundación Integra" },
+  { year: "1996", description: "Instituto Cultural de Providencia" },
+  { year: "1996", description: "Cementerio General, Patio de los Presidentes" },
 ];
 
 export default function Trayectoria() {
@@ -83,6 +109,13 @@ export default function Trayectoria() {
                     permitiéndole la autoexpresión a través de la materialidad.
                   </p>
                   <p>
+                    Su maestra Lily Garafulic, quien trabajó en el taller de
+                    Constantin Brancusi y fue Directora del Museo Nacional de
+                    Bellas Artes, le enseñó que &ldquo;hay demasiado escrito en
+                    arte&rdquo; y le dio las llaves de su taller con absoluta
+                    confianza.
+                  </p>
+                  <p>
                     La escultura le ha permitido desarrollar, investigar,
                     formular y preguntar en un lenguaje propio. Su obra explora
                     la existencia humana y el ser en medio de cambios
@@ -104,9 +137,9 @@ export default function Trayectoria() {
                     Formación
                   </h3>
                   <div className="space-y-3 text-sm">
-                    <p>Universidad de Chile — Alumno libre</p>
+                    <p>Talleres de Lily Garafulic y Matías Vial</p>
+                    <p>Alumno libre, Facultad de Artes Visuales, Universidad de Chile</p>
                     <p>Grabado, Pintura, Acuarela</p>
-                    <p>Estudios de Diseño</p>
                   </div>
                 </div>
               </FadeIn>
@@ -115,7 +148,7 @@ export default function Trayectoria() {
         </div>
       </section>
 
-      {/* Exhibitions */}
+      {/* Individual Exhibitions */}
       <section className="py-16 md:py-24 px-6 border-t border-stone/30">
         <div className="max-w-[1400px] mx-auto">
           <FadeIn>
@@ -126,6 +159,41 @@ export default function Trayectoria() {
 
           <div className="space-y-0">
             {exhibitions.map((ex, i) => (
+              <FadeIn key={ex.year + ex.title} delay={i * 0.08}>
+                <div className="grid grid-cols-12 gap-4 py-6 border-b border-stone/20 group">
+                  <div className="col-span-2 md:col-span-1">
+                    <span className="text-sm text-warm-gray font-light">
+                      {ex.year}
+                    </span>
+                  </div>
+                  <div className="col-span-10 md:col-span-4">
+                    <span className="font-heading text-base md:text-lg font-normal italic tracking-wide group-hover:text-warm-gray transition-colors">
+                      {ex.title}
+                    </span>
+                  </div>
+                  <div className="col-span-12 md:col-span-7 md:text-right">
+                    <span className="text-sm text-warm-gray">
+                      {ex.venue}
+                    </span>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Collective Exhibitions */}
+      <section className="py-16 md:py-24 px-6 border-t border-stone/30">
+        <div className="max-w-[1400px] mx-auto">
+          <FadeIn>
+            <h2 className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-16">
+              Exposiciones Colectivas
+            </h2>
+          </FadeIn>
+
+          <div className="space-y-0">
+            {collectiveExhibitions.map((ex, i) => (
               <FadeIn key={ex.year + ex.title} delay={i * 0.08}>
                 <div className="grid grid-cols-12 gap-4 py-6 border-b border-stone/20 group">
                   <div className="col-span-2 md:col-span-1">
@@ -191,7 +259,7 @@ export default function Trayectoria() {
               {[
                 "Chile", "México", "Brasil", "Argentina", "Ecuador",
                 "Perú", "Bolivia", "Colombia", "El Salvador", "Uruguay",
-                "Irán", "Rumania", "Chipre",
+                "Irán", "Rumania", "Chipre", "Arabia Saudita",
               ].map((country) => (
                 <span
                   key={country}
@@ -201,6 +269,75 @@ export default function Trayectoria() {
                 </span>
               ))}
             </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Jeff Koons Photo */}
+      <section className="py-16 md:py-24 px-6 border-t border-stone/30">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+            <div className="md:col-span-6 md:col-start-4">
+              <FadeIn>
+                <div className="aspect-[4/3] relative bg-stone/20">
+                  <Image
+                    src="/images/con-jeff-koons.jpg"
+                    alt="José Miguel Cárcamo junto a Jeff Koons"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <p className="text-sm text-warm-gray mt-4 text-center font-heading italic tracking-wide">
+                  Junto a Jeff Koons
+                </p>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Obra Pública Histórica */}
+      <section className="py-16 md:py-24 px-6 border-t border-stone/30">
+        <div className="max-w-[1400px] mx-auto">
+          <FadeIn>
+            <h2 className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-16">
+              Obra Pública Histórica
+            </h2>
+          </FadeIn>
+
+          <div className="space-y-0">
+            {obraPublica.map((item, i) => (
+              <FadeIn key={item.year + item.description} delay={i * 0.08}>
+                <div className="grid grid-cols-12 gap-4 py-5 border-b border-stone/20">
+                  <div className="col-span-2 md:col-span-1">
+                    <span className="text-sm text-warm-gray font-light">
+                      {item.year}
+                    </span>
+                  </div>
+                  <div className="col-span-10 md:col-span-11">
+                    <span className="text-sm font-light tracking-wide">
+                      {item.description}
+                    </span>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Colecciones */}
+      <section className="py-24 md:py-40 px-6 border-t border-stone/30">
+        <div className="max-w-[1400px] mx-auto text-center">
+          <FadeIn>
+            <p className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-8">
+              Colecciones
+            </p>
+            <p className="font-heading text-xl md:text-2xl font-light italic tracking-wide text-warm-gray leading-relaxed max-w-3xl mx-auto">
+              Obras en colecciones de Argentina, Brasil, Ecuador, Uruguay,
+              Estados Unidos, Austria, Portugal, Rumania e Italia.
+            </p>
           </FadeIn>
         </div>
       </section>

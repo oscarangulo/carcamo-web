@@ -10,10 +10,71 @@ const categories = [
   { id: "publica", label: "Obra Pública" },
   { id: "fractura", label: "Fractura / Calce" },
   { id: "estelas", label: "Estelas" },
-  { id: "figura", label: "Figura Humana" },
+  { id: "domos", label: "Domos" },
+  { id: "ojos", label: "Ojos" },
+  { id: "organica", label: "Orgánica" },
+  { id: "cuerpo", label: "Figura Humana" },
+  { id: "retrato", label: "Retrato" },
 ];
 
 const works = [
+  // OBRA PUBLICA
+  {
+    src: "/images/obra-publica-chile-santiago-bellavista.jpg",
+    title: "Patio Bellavista",
+    location: "Santiago, Chile",
+    category: "publica",
+    year: "2016",
+  },
+  {
+    src: "/images/obra-publica-chile-atacama.jpg",
+    title: "Escultura en el Desierto",
+    location: "San Pedro de Atacama, Chile",
+    category: "publica",
+    year: "2022",
+  },
+  {
+    src: "/images/obra-publica-chipre-ayia-napa.jpg",
+    title: "Simposio Internacional",
+    location: "Ayia Napa, Chipre",
+    category: "publica",
+    year: "2015",
+  },
+  {
+    src: "/images/obra-publica-iran-tabriz.jpg",
+    title: "III Simposio Internacional",
+    location: "Tabriz, Irán",
+    category: "publica",
+    year: "2016",
+  },
+  {
+    src: "/images/obra-publica-bolivia-samaipata.jpg",
+    title: "IV Bienal Internacional",
+    location: "Samaipata, Bolivia",
+    category: "publica",
+    year: "2014",
+  },
+  {
+    src: "/images/obra-publica-rumania-caransebes.jpg",
+    title: "XIV Simposio Internacional",
+    location: "Caransebes, Rumania",
+    category: "publica",
+    year: "2016",
+  },
+  {
+    src: "/images/obra-publica-ecuador-machachi.jpg",
+    title: "Simposio Internacional",
+    location: "Machachi, Ecuador",
+    category: "publica",
+    year: "2015",
+  },
+  {
+    src: "/images/obra-publica-argentina-corrientes.jpg",
+    title: "Simposio Internacional",
+    location: "Corrientes, Argentina",
+    category: "publica",
+    year: "2019",
+  },
   {
     src: "/images/rumania-caransebes-1.jpeg",
     title: "Simposio Caransebes",
@@ -30,24 +91,10 @@ const works = [
   },
   {
     src: "/images/ecuador-quito-2.jpeg",
-    title: "Simposio Internacional",
+    title: "III Simposio Internacional",
     location: "Quito, Ecuador",
     category: "publica",
     year: "2013",
-  },
-  {
-    src: "/images/escultura.jpeg",
-    title: "Fractura / Calce",
-    location: "Taller del artista",
-    category: "fractura",
-    year: "2018",
-  },
-  {
-    src: "/images/obra-publica.jpeg",
-    title: "Forma Orgánica",
-    location: "Chile",
-    category: "estelas",
-    year: "2017",
   },
   {
     src: "/images/natural-coupling-stone.jpeg",
@@ -56,12 +103,215 @@ const works = [
     category: "publica",
     year: "2019",
   },
+  // FRACTURA / CALCE
+  {
+    src: "/images/fractura-calce-forma-abierta.jpg",
+    title: "Forma Abierta",
+    location: "Piedra basalto",
+    category: "fractura",
+    year: "",
+  },
+  {
+    src: "/images/fractura-calce-dos-formas.jpg",
+    title: "Dos Formas",
+    location: "Piedra basalto",
+    category: "fractura",
+    year: "",
+  },
+  {
+    src: "/images/fractura-calce-esfera-rota.jpg",
+    title: "Esfera Fracturada",
+    location: "Granito",
+    category: "fractura",
+    year: "",
+  },
+  {
+    src: "/images/fractura-calce-abstracta.jpg",
+    title: "Abstracción",
+    location: "Piedra basalto",
+    category: "fractura",
+    year: "",
+  },
+  {
+    src: "/images/escultura.jpeg",
+    title: "Fractura / Calce",
+    location: "Taller del artista",
+    category: "fractura",
+    year: "2018",
+  },
+  // ESTELAS
+  {
+    src: "/images/estelas-estela-triple.jpg",
+    title: "Estela Triple",
+    location: "Piedra",
+    category: "estelas",
+    year: "",
+  },
+  {
+    src: "/images/estelas-espiral-cuadrada.jpg",
+    title: "Espiral",
+    location: "Piedra roja",
+    category: "estelas",
+    year: "",
+  },
+  {
+    src: "/images/estelas-estela-vertical.jpg",
+    title: "Estela Vertical",
+    location: "Piedra",
+    category: "estelas",
+    year: "",
+  },
+  // DOMOS
+  {
+    src: "/images/domos-piedra-concava.jpg",
+    title: "Domo Cóncavo",
+    location: "Piedra",
+    category: "domos",
+    year: "",
+  },
+  {
+    src: "/images/domos-disco-central.jpg",
+    title: "Disco Central",
+    location: "Piedra",
+    category: "domos",
+    year: "",
+  },
+  {
+    src: "/images/domos-piedra-pendulo.jpg",
+    title: "Péndulo",
+    location: "Piedra",
+    category: "domos",
+    year: "",
+  },
+  {
+    src: "/images/domos-granito-gris.jpg",
+    title: "Domo Granito",
+    location: "Granito gris",
+    category: "domos",
+    year: "",
+  },
+  // OJOS
+  {
+    src: "/images/ojos-ojo-frontal.jpg",
+    title: "Ojo Frontal",
+    location: "Basalto",
+    category: "ojos",
+    year: "",
+  },
+  {
+    src: "/images/ojos-ojo-oscuro-curvas.jpg",
+    title: "Curvas",
+    location: "Piedra pulida",
+    category: "ojos",
+    year: "",
+  },
+  {
+    src: "/images/ojos-ojo-angular.jpg",
+    title: "Ojo Angular",
+    location: "Basalto",
+    category: "ojos",
+    year: "",
+  },
+  {
+    src: "/images/ojos-ojo-iluminado.jpg",
+    title: "Ojo Iluminado",
+    location: "Piedra",
+    category: "ojos",
+    year: "",
+  },
+  // ORGANICA
+  {
+    src: "/images/organica-forma-biomorfica.jpg",
+    title: "Forma Biomórfica",
+    location: "Granito negro",
+    category: "organica",
+    year: "",
+  },
+  {
+    src: "/images/organica-forma-ondulante.jpg",
+    title: "Forma Ondulante",
+    location: "Mármol",
+    category: "organica",
+    year: "",
+  },
+  {
+    src: "/images/organica-piedra-equilibrio.jpg",
+    title: "Equilibrio",
+    location: "Granito",
+    category: "organica",
+    year: "",
+  },
+  {
+    src: "/images/organica-forma-sinuosa.jpg",
+    title: "Forma Sinuosa",
+    location: "Caliza",
+    category: "organica",
+    year: "",
+  },
   {
     src: "/images/desplazamiento-organico.jpeg",
     title: "Desplazamiento Orgánico",
     location: "Taller del artista",
-    category: "estelas",
+    category: "organica",
     year: "2016",
+  },
+  {
+    src: "/images/obra-publica.jpeg",
+    title: "Forma Orgánica",
+    location: "Chile",
+    category: "organica",
+    year: "2017",
+  },
+  // CUERPO - FIGURA HUMANA
+  {
+    src: "/images/cuerpo-torso-femenino-marmol.jpg",
+    title: "Torso Femenino",
+    location: "Mármol blanco",
+    category: "cuerpo",
+    year: "",
+  },
+  {
+    src: "/images/cuerpo-arco-negro.jpg",
+    title: "Arco",
+    location: "Basalto negro",
+    category: "cuerpo",
+    year: "",
+  },
+  {
+    src: "/images/cuerpo-figura-vertical.jpg",
+    title: "Figura Vertical",
+    location: "Piedra",
+    category: "cuerpo",
+    year: "",
+  },
+  {
+    src: "/images/cuerpo-torso-frontal.jpg",
+    title: "Torso",
+    location: "Piedra",
+    category: "cuerpo",
+    year: "",
+  },
+  // RETRATO
+  {
+    src: "/images/retrato-cabeza-mujer.jpg",
+    title: "Retrato Mujer",
+    location: "Mármol blanco",
+    category: "retrato",
+    year: "",
+  },
+  {
+    src: "/images/retrato-cabeza-abstracta-marmol.jpg",
+    title: "Cabeza Abstracta",
+    location: "Mármol rojo",
+    category: "retrato",
+    year: "",
+  },
+  {
+    src: "/images/retrato-perfil-mujer.jpg",
+    title: "Perfil",
+    location: "Piedra",
+    category: "retrato",
+    year: "",
   },
 ];
 
@@ -134,7 +384,7 @@ export default function Portafolio() {
                     <div className="img-zoom aspect-[4/5] relative bg-stone/20">
                       <Image
                         src={work.src}
-                        alt={`${work.title} — ${work.location}, ${work.year}`}
+                        alt={`${work.title} — ${work.location}${work.year ? `, ${work.year}` : ""}`}
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -193,7 +443,10 @@ export default function Portafolio() {
               <Image src={selectedWork.src} alt={selectedWork.title} fill className="object-contain" sizes="90vw" />
               <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-charcoal/80 to-transparent">
                 <h3 className="font-heading text-cream text-xl italic font-light tracking-wide">{selectedWork.title}</h3>
-                <p className="text-cream/60 text-sm mt-1">{selectedWork.location} — {selectedWork.year}</p>
+                <p className="text-cream/60 text-sm mt-1">
+                  {selectedWork.location}
+                  {selectedWork.year ? ` — ${selectedWork.year}` : ""}
+                </p>
               </div>
             </motion.div>
           </motion.div>

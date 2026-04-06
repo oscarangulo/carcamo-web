@@ -55,15 +55,15 @@ export default function Proceso() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <FadeIn direction="left">
               <div className="img-zoom aspect-[4/3] relative bg-stone/20">
-                <Image src="/images/boceto-proceso.jpeg" alt="Proceso de boceto para escultura en piedra basalto" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+                <Image src="/images/proceso-boceto-dibujo.jpg" alt="Bocetos y diseños preparatorios para escultura" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
               </div>
               <p className="text-[10px] tracking-[0.2em] uppercase text-warm-gray mt-4">Bocetos y diseño inicial</p>
             </FadeIn>
             <FadeIn direction="right" delay={0.15}>
               <div className="img-zoom aspect-[4/3] relative bg-stone/20">
-                <Image src="/images/natural-coupling-stone.jpeg" alt="Talla directa en piedra basalto — Natural Coupling Stone" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+                <Image src="/images/proceso-tallado-interior.jpg" alt="El escultor tallando el interior de una pieza monumental" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
               </div>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-warm-gray mt-4">Talla directa en piedra basalto</p>
+              <p className="text-[10px] tracking-[0.2em] uppercase text-warm-gray mt-4">Talla directa en piedra</p>
             </FadeIn>
           </div>
         </div>
@@ -93,6 +93,65 @@ export default function Proceso() {
                 {i < steps.length - 1 && <hr className="mt-16 md:mt-24 border-stone/20" />}
               </FadeIn>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Additional Process Images */}
+      <section className="py-12 md:py-20 px-6 border-t border-stone/30">
+        <div className="max-w-[1400px] mx-auto">
+          <FadeIn>
+            <h2 className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-12">Documentación del proceso</h2>
+          </FadeIn>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            <FadeIn delay={0.1}>
+              <div className="img-zoom aspect-[4/3] relative bg-stone/20">
+                <Image src="/images/proceso-desbaste-piedra.jpg" alt="Desbaste de bloque de mármol con marcas de cincel" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+              </div>
+              <p className="text-[10px] tracking-[0.2em] uppercase text-warm-gray mt-4">Desbaste del bloque</p>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <div className="img-zoom aspect-[4/3] relative bg-stone/20">
+                <Image src="/images/proceso-obra-terminada.jpg" alt="Escultura monumental terminada en simposio internacional" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+              </div>
+              <p className="text-[10px] tracking-[0.2em] uppercase text-warm-gray mt-4">Obra terminada en simposio</p>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* Arabia Saudita Experience */}
+      <section className="py-16 md:py-24 px-6 border-t border-stone/30">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+            <div className="md:col-span-2">
+              <FadeIn><p className="text-[10px] tracking-[0.3em] uppercase text-warm-gray">Aprendizaje</p></FadeIn>
+            </div>
+            <div className="md:col-span-7 md:col-start-4">
+              <FadeIn delay={0.2}>
+                <blockquote className="font-heading text-2xl md:text-3xl font-light leading-relaxed tracking-wide italic mb-8">
+                  Cada vez que hacía una maqueta, tendía a simplificar, a reducir. Es como llegar al verbo de la forma.
+                </blockquote>
+                <div className="space-y-6 text-sm md:text-base text-warm-gray leading-relaxed">
+                  <p>
+                    En el simposio de Arabia Saudita, el trabajo con artesanos egipcios
+                    con experiencia de toda una vida en canteras de piedra reveló una forma
+                    distinta de pensar el material. En lugar de seguir directamente las curvas,
+                    partían del cuadrado, usando cortes estratégicos y cuñas. Una lógica diferente,
+                    más estructural y al mismo tiempo más eficiente.
+                  </p>
+                  <p>
+                    Lo que en Latinoamérica podría tomar semanas, ellos lo lograban en días.
+                    Podían cortar bloques de media tonelada en una sola mañana. La piedra no es
+                    solo materia, sino historia acumulada durante siglos.
+                  </p>
+                  <p className="font-heading text-lg italic text-charcoal">
+                    El aprendizaje nunca termina. Cada cultura desarrolla su propia forma
+                    de relacionarse con los materiales y trabajarlos.
+                  </p>
+                </div>
+              </FadeIn>
+            </div>
           </div>
         </div>
       </section>
