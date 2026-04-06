@@ -172,7 +172,7 @@ export default function OGImage() {
                   color: "rgba(212,206,200,0.4)",
                 }}
               >
-                carcamo.strixsoft.com
+                www.jmcarcamo.cl
               </span>
             </div>
           </div>

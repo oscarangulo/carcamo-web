@@ -18,7 +18,7 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://carcamo.strixsoft.com"),
+  metadataBase: new URL("https://www.jmcarcamo.cl"),
   title: {
     default: "José Miguel Cárcamo — Escultor",
     template: "%s | José Miguel Cárcamo",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title: "José Miguel Cárcamo — Escultor Chileno | Escultura en Piedra",
     description:
       "Más de 25 años dedicados a la escultura en piedra basalto. Obra pública en 13 países. Descubre su portafolio, proceso creativo y trayectoria internacional.",
-    url: "https://carcamo.strixsoft.com",
+    url: "https://www.jmcarcamo.cl",
     siteName: "José Miguel Cárcamo — Escultor",
     locale: "es_CL",
     type: "website",
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://carcamo.strixsoft.com",
+    canonical: "https://www.jmcarcamo.cl",
   },
 };
 
@@ -85,8 +85,8 @@ const jsonLd = {
   jobTitle: "Escultor",
   description:
     "Escultor chileno con más de 25 años dedicados a la escultura en piedra basalto.",
-  url: "https://carcamo.strixsoft.com",
-  image: "https://carcamo.strixsoft.com/og-image.jpg",
+  url: "https://www.jmcarcamo.cl",
+  image: "https://www.jmcarcamo.cl/og-image.jpg",
   email: "jmcf68@gmail.com",
   telephone: "+56987906530",
   address: {
