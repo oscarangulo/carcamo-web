@@ -21,9 +21,9 @@ export default function Proceso() {
             <div className="md:col-span-8">
               <FadeIn>
                 <p className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-4">Proceso de Obra</p>
-                <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-light tracking-wide italic leading-[1.1]">
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-extralight tracking-[0.05em] uppercase leading-[1.1]">
                   Del concepto
-                  <br /><span className="not-italic font-normal">a la materia</span>
+                  <br />a la materia
                 </h1>
               </FadeIn>
             </div>
@@ -40,7 +40,7 @@ export default function Proceso() {
             </div>
             <div className="md:col-span-7 md:col-start-4">
               <FadeIn delay={0.2}>
-                <blockquote className="font-heading text-2xl md:text-3xl font-light leading-relaxed tracking-wide italic">
+                <blockquote className="text-2xl md:text-3xl font-extralight leading-relaxed tracking-wide">
                   Los fundamentos de cada escultura obedecen a un camino personal de búsqueda en torno al lenguaje matérico. Cada escultura existe en relación con la dimensión psicológica y espiritual del observador, reflejando un significado subjetivo y personal único para cada individuo.
                 </blockquote>
               </FadeIn>
@@ -81,10 +81,10 @@ export default function Proceso() {
               <FadeIn key={step.number} delay={i * 0.1}>
                 <div className="grid grid-cols-12 gap-6 md:gap-8">
                   <div className="col-span-12 md:col-span-1">
-                    <span className="font-heading text-6xl md:text-7xl font-light text-stone/40 italic">{step.number}</span>
+                    <span className="text-6xl md:text-7xl font-extralight text-stone/40">{step.number}</span>
                   </div>
                   <div className="col-span-12 md:col-span-3 md:col-start-3">
-                    <h3 className="font-heading text-xl md:text-2xl font-normal italic tracking-wide">{step.title}</h3>
+                    <h3 className="text-xl md:text-2xl font-extralight tracking-wide">{step.title}</h3>
                   </div>
                   <div className="col-span-12 md:col-span-5 md:col-start-7">
                     <p className="text-sm md:text-base text-warm-gray leading-relaxed">{step.description}</p>
@@ -129,7 +129,7 @@ export default function Proceso() {
             </div>
             <div className="md:col-span-7 md:col-start-4">
               <FadeIn delay={0.2}>
-                <blockquote className="font-heading text-2xl md:text-3xl font-light leading-relaxed tracking-wide italic mb-8">
+                <blockquote className="text-2xl md:text-3xl font-extralight leading-relaxed tracking-wide mb-8">
                   Cada vez que hacía una maqueta, tendía a simplificar, a reducir. Es como llegar al verbo de la forma.
                 </blockquote>
                 <div className="space-y-6 text-sm md:text-base text-warm-gray leading-relaxed">
@@ -145,7 +145,7 @@ export default function Proceso() {
                     Podían cortar bloques de media tonelada en una sola mañana. La piedra no es
                     solo materia, sino historia acumulada durante siglos.
                   </p>
-                  <p className="font-heading text-lg italic text-charcoal">
+                  <p className="text-lg font-light text-charcoal">
                     El aprendizaje nunca termina. Cada cultura desarrolla su propia forma
                     de relacionarse con los materiales y trabajarlos.
                   </p>
@@ -161,7 +161,7 @@ export default function Proceso() {
         <div className="max-w-[1400px] mx-auto text-center">
           <FadeIn>
             <p className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-8">Material</p>
-            <h2 className="font-heading text-4xl md:text-6xl font-light tracking-wide italic mb-6">Piedra Basalto</h2>
+            <h2 className="text-4xl md:text-6xl font-extralight tracking-wide mb-6">Piedra Basalto</h2>
             <p className="text-sm md:text-base text-warm-gray max-w-xl mx-auto leading-relaxed">
               El basalto es una roca ígnea volcánica de gran dureza y nobleza. Su color oscuro y textura única permiten crear contrastes profundos entre superficies pulidas y rugosas, revelando la esencia mineral de la tierra.
             </p>

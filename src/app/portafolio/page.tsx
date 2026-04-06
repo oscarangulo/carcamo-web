@@ -332,7 +332,7 @@ export default function Portafolio() {
             <p className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-4">
               Portafolio
             </p>
-            <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-light tracking-wide italic leading-[1.1]">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extralight tracking-[0.05em] uppercase leading-[1.1]">
               Obra
             </h1>
           </FadeIn>
@@ -392,7 +392,7 @@ export default function Portafolio() {
                       <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors duration-500" />
                     </div>
                     <div className="mt-4">
-                      <h3 className="font-heading text-base italic tracking-wide font-normal">
+                      <h3 className="text-sm tracking-[0.1em] font-light">
                         {work.title}
                       </h3>
                       <div className="flex items-center justify-between mt-1">
@@ -442,7 +442,7 @@ export default function Portafolio() {
             >
               <Image src={selectedWork.src} alt={selectedWork.title} fill className="object-contain" sizes="90vw" />
               <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-charcoal/80 to-transparent">
-                <h3 className="font-heading text-cream text-xl italic font-light tracking-wide">{selectedWork.title}</h3>
+                <h3 className="text-cream text-lg font-light tracking-wide">{selectedWork.title}</h3>
                 <p className="text-cream/60 text-sm mt-1">
                   {selectedWork.location}
                   {selectedWork.year ? ` — ${selectedWork.year}` : ""}

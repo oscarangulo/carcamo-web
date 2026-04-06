@@ -63,12 +63,12 @@ export default function Trayectoria() {
                 <p className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-4">
                   Trayectoria
                 </p>
-                <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-light tracking-wide leading-[1.1] italic">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-extralight tracking-[0.05em] uppercase leading-[1.1]">
                   Más de 25 años
                   <br />
                   dedicados a la
                   <br />
-                  <span className="not-italic font-normal">escultura</span>
+                  escultura
                 </h1>
               </FadeIn>
             </div>
@@ -94,7 +94,7 @@ export default function Trayectoria() {
             </FadeIn>
             <div className="md:col-span-6 md:col-start-7">
               <FadeIn delay={0.2}>
-                <h2 className="font-heading text-3xl md:text-4xl font-light tracking-wide italic leading-relaxed mb-8">
+                <h2 className="text-2xl md:text-3xl font-extralight tracking-wide leading-relaxed mb-8">
                   José Miguel Cárcamo Fonseca
                 </h2>
                 <div className="space-y-6 text-sm md:text-base text-warm-gray leading-relaxed">
@@ -167,7 +167,7 @@ export default function Trayectoria() {
                     </span>
                   </div>
                   <div className="col-span-10 md:col-span-4">
-                    <span className="font-heading text-base md:text-lg font-normal italic tracking-wide group-hover:text-warm-gray transition-colors">
+                    <span className="text-base md:text-lg font-light tracking-wide group-hover:text-warm-gray transition-colors">
                       {ex.title}
                     </span>
                   </div>
@@ -202,7 +202,7 @@ export default function Trayectoria() {
                     </span>
                   </div>
                   <div className="col-span-10 md:col-span-4">
-                    <span className="font-heading text-base md:text-lg font-normal italic tracking-wide group-hover:text-warm-gray transition-colors">
+                    <span className="text-base md:text-lg font-light tracking-wide group-hover:text-warm-gray transition-colors">
                       {ex.title}
                     </span>
                   </div>
@@ -263,7 +263,7 @@ export default function Trayectoria() {
               ].map((country) => (
                 <span
                   key={country}
-                  className="font-heading text-xl md:text-2xl font-light italic tracking-wide text-warm-gray"
+                  className="text-lg md:text-xl font-extralight tracking-wide text-warm-gray"
                 >
                   {country}
                 </span>
@@ -288,7 +288,7 @@ export default function Trayectoria() {
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
-                <p className="text-sm text-warm-gray mt-4 text-center font-heading italic tracking-wide">
+                <p className="text-sm text-warm-gray mt-4 text-center font-light tracking-wide">
                   Junto a Jeff Koons
                 </p>
               </FadeIn>
@@ -334,7 +334,7 @@ export default function Trayectoria() {
             <p className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-8">
               Colecciones
             </p>
-            <p className="font-heading text-xl md:text-2xl font-light italic tracking-wide text-warm-gray leading-relaxed max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl font-extralight tracking-wide text-warm-gray leading-relaxed max-w-3xl mx-auto">
               Obras en colecciones de Argentina, Brasil, Ecuador, Uruguay,
               Estados Unidos, Austria, Portugal, Rumania e Italia.
             </p>

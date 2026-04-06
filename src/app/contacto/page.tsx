@@ -20,7 +20,7 @@ export default function Contacto() {
         <div className="max-w-[1400px] mx-auto">
           <FadeIn>
             <p className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-4">Contacto</p>
-            <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-light tracking-wide italic leading-[1.1]">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extralight tracking-[0.05em] uppercase leading-[1.1]">
               Conversemos
             </h1>
           </FadeIn>
@@ -35,19 +35,19 @@ export default function Contacto() {
                 <div className="space-y-12">
                   <div>
                     <h3 className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-4">Email</h3>
-                    <a href="mailto:jmcf68@gmail.com" className="font-heading text-xl italic font-light hover:text-warm-gray transition-colors duration-300 cursor-pointer">jmcf68@gmail.com</a>
+                    <a href="mailto:jmcf68@gmail.com" className="text-lg font-light hover:text-warm-gray transition-colors duration-300 cursor-pointer">jmcf68@gmail.com</a>
                   </div>
                   <div>
                     <h3 className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-4">Teléfono</h3>
-                    <a href="tel:+56987906530" className="font-heading text-xl italic font-light hover:text-warm-gray transition-colors duration-300 cursor-pointer">+56 9 8790 6530</a>
+                    <a href="tel:+56987906530" className="text-lg font-light hover:text-warm-gray transition-colors duration-300 cursor-pointer">+56 9 8790 6530</a>
                   </div>
                   <div>
                     <h3 className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-4">Instagram</h3>
-                    <a href="https://www.instagram.com/josemiguelcarcamo" target="_blank" rel="noopener noreferrer" className="font-heading text-xl italic font-light hover:text-warm-gray transition-colors duration-300 cursor-pointer">@josemiguelcarcamo</a>
+                    <a href="https://www.instagram.com/josemiguelcarcamo" target="_blank" rel="noopener noreferrer" className="text-lg font-light hover:text-warm-gray transition-colors duration-300 cursor-pointer">@josemiguelcarcamo</a>
                   </div>
                   <div>
                     <h3 className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-4">Ubicación</h3>
-                    <p className="font-heading text-xl italic font-light">Santiago de Chile</p>
+                    <p className="text-lg font-light">Santiago de Chile</p>
                     <p className="text-sm text-warm-gray mt-1">Tucapel 6163, Peñalolén</p>
                   </div>
                   <div>
@@ -65,7 +65,7 @@ export default function Contacto() {
               <FadeIn delay={0.2}>
                 {submitted ? (
                   <div className="text-center py-20">
-                    <p className="font-heading text-3xl font-light italic tracking-wide mb-4">Gracias por su mensaje</p>
+                    <p className="text-3xl font-extralight tracking-wide mb-4">Gracias por su mensaje</p>
                     <p className="text-sm text-warm-gray">Responderé a la brevedad posible.</p>
                     <button
                       onClick={() => { setSubmitted(false); setFormState({ nombre: "", email: "", asunto: "", mensaje: "" }); }}

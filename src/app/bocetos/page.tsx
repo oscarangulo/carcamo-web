@@ -25,8 +25,8 @@ export default function Bocetos() {
             <div className="md:col-span-8">
               <FadeIn>
                 <p className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-4">Bocetos</p>
-                <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-light tracking-wide italic leading-[1.1]">
-                  El origen<br /><span className="not-italic font-normal">de la forma</span>
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-extralight tracking-[0.05em] uppercase leading-[1.1]">
+                  El origen<br />de la forma
                 </h1>
               </FadeIn>
             </div>
@@ -56,7 +56,7 @@ export default function Bocetos() {
                     <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/5 transition-colors duration-500" />
                   </div>
                   <div className="mt-4">
-                    <h3 className="font-heading text-base italic tracking-wide font-normal">{sketch.title}</h3>
+                    <h3 className="text-sm tracking-[0.1em] font-light">{sketch.title}</h3>
                     <p className="text-[10px] tracking-[0.15em] text-warm-gray mt-1">{sketch.description}</p>
                   </div>
                 </button>
@@ -91,7 +91,7 @@ export default function Bocetos() {
             >
               <Image src={selectedSketch.src} alt={selectedSketch.title} fill className="object-contain" sizes="90vw" />
               <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-charcoal/80 to-transparent">
-                <h3 className="font-heading text-cream text-xl italic font-light tracking-wide">{selectedSketch.title}</h3>
+                <h3 className="text-cream text-lg font-light tracking-wide">{selectedSketch.title}</h3>
                 <p className="text-cream/60 text-sm mt-1">{selectedSketch.description}</p>
               </div>
             </motion.div>

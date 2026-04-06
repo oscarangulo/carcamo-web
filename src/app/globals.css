@@ -11,7 +11,6 @@
   --color-muted: #64748b;
   --color-border: #e4e4e7;
   --font-sans: var(--font-geist-sans);
-  --font-serif: var(--font-cormorant);
 }
 
 :root {
@@ -101,7 +100,3 @@ hr {
   outline-offset: 2px;
 }
 
-/* Serif headings utility */
-.font-heading {
-  font-family: var(--font-serif, "Cormorant", Georgia, serif);
-}

@@ -35,10 +35,11 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/jm-carcamo.png"
-            alt="José Miguel Cárcamo junto a su escultura"
+            src="/images/arabia-saudita-volutas-noche.jpg"
+            alt="José Miguel Cárcamo — Escultura"
             fill
-            className="object-cover object-top opacity-30"
+            className="object-cover opacity-30"
+            style={{ objectPosition: "center center" }}
             priority
             sizes="100vw"
           />
@@ -60,13 +61,11 @@ export default function Home() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="font-heading text-6xl md:text-8xl lg:text-9xl font-light tracking-wide leading-[1.05] italic"
+            className="text-5xl md:text-7xl lg:text-8xl font-extralight tracking-[0.08em] uppercase leading-[1.1]"
           >
             José Miguel
             <br />
-            <span className="not-italic font-normal tracking-[0.05em]">
-              Cárcamo
-            </span>
+            Cárcamo
           </motion.h1>
 
           <motion.div
@@ -127,7 +126,7 @@ export default function Home() {
             </div>
             <div className="md:col-span-7 md:col-start-4">
               <FadeIn delay={0.2}>
-                <blockquote className="font-heading text-3xl md:text-4xl lg:text-[2.75rem] font-light leading-relaxed tracking-wide italic">
+                <blockquote className="text-2xl md:text-3xl lg:text-[2.75rem] font-extralight leading-relaxed tracking-wide">
                   Las propuestas y planteamientos escultóricos se introducen en
                   los intrincados laberintos del yo interior, donde la materia
                   se transforma en lenguaje.
@@ -216,7 +215,7 @@ export default function Home() {
                 <p className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-6">
                   Proceso de Obra
                 </p>
-                <h2 className="font-heading text-4xl md:text-5xl font-light tracking-wide leading-snug italic mb-8">
+                <h2 className="text-4xl md:text-5xl font-extralight tracking-wide leading-snug mb-8">
                   Del boceto a la piedra
                 </h2>
                 <p className="text-sm md:text-base text-warm-gray leading-relaxed mb-10">
@@ -247,7 +246,7 @@ export default function Home() {
             <p className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-8">
               Contacto
             </p>
-            <h2 className="font-heading text-4xl md:text-6xl font-light tracking-wide italic mb-10">
+            <h2 className="text-4xl md:text-6xl font-extralight tracking-wide mb-10">
               Conversemos sobre su proyecto
             </h2>
             <Link

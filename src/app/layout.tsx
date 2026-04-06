@@ -1,15 +1,8 @@
 import type { Metadata } from "next";
-import { Cormorant, Geist } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-
-const cormorant = Cormorant({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,7 +43,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "José Miguel Cárcamo — Escultor chileno junto a su escultura monumental en piedra",
+        alt: "Escultura monumental de José Miguel Cárcamo — Simposio Internacional Arabia Saudita",
         type: "image/jpeg",
       },
     ],
@@ -107,10 +100,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="es"
-      className={`${cormorant.variable} ${geistSans.variable} h-full antialiased`}
-    >
+    <html lang="es" className={`${geistSans.variable} h-full antialiased`}>
       <head>
         <script
           type="application/ld+json"

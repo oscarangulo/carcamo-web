@@ -34,33 +34,33 @@ export default function OGImage() {
           height: 630,
           position: "relative",
           overflow: "hidden",
-          fontFamily: "'Cormorant', Georgia, serif",
+          fontFamily: "'Geist', 'Helvetica Neue', Arial, sans-serif",
           background: "#1a1a1a",
         }}
       >
-        {/* Background Image - shifted right */}
+        {/* Background Image - Arabia Saudita sculpture */}
         <img
-          src="/images/jm-carcamo.png"
+          src="/images/arabia-saudita-volutas-noche.jpg"
           alt=""
           style={{
             position: "absolute",
             top: 0,
-            right: 0,
-            width: "70%",
+            left: 0,
+            width: "100%",
             height: "100%",
             objectFit: "cover",
-            objectPosition: "center top",
-            opacity: 0.5,
+            objectPosition: "center center",
+            opacity: 0.6,
           }}
         />
 
-        {/* Gradient overlays - stronger on left for text readability */}
+        {/* Gradient overlays */}
         <div
           style={{
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(to right, rgba(26,26,26,0.95) 0%, rgba(26,26,26,0.85) 35%, rgba(26,26,26,0.3) 70%, rgba(26,26,26,0.5) 100%)",
+              "linear-gradient(to right, rgba(26,26,26,0.9) 0%, rgba(26,26,26,0.7) 40%, rgba(26,26,26,0.2) 70%, rgba(26,26,26,0.4) 100%)",
           }}
         />
         <div
@@ -69,9 +69,9 @@ export default function OGImage() {
             bottom: 0,
             left: 0,
             right: 0,
-            height: "50%",
+            height: "40%",
             background:
-              "linear-gradient(to top, rgba(26,26,26,0.85) 0%, transparent 100%)",
+              "linear-gradient(to top, rgba(26,26,26,0.8) 0%, transparent 100%)",
           }}
         />
 
@@ -92,28 +92,27 @@ export default function OGImage() {
           <div>
             <span
               style={{
-                fontFamily: "'Geist', 'Helvetica Neue', sans-serif",
-                fontSize: 13,
+                fontSize: 11,
                 letterSpacing: "0.35em",
                 textTransform: "uppercase",
                 color: "rgba(212,206,200,0.7)",
+                fontWeight: 300,
               }}
             >
               Escultor &mdash; Santiago de Chile
             </span>
           </div>
 
-          {/* Center-bottom: Main text */}
+          {/* Bottom: Main text */}
           <div>
-            {/* Name */}
             <h1
               style={{
-                fontSize: 82,
-                fontWeight: 300,
-                fontStyle: "italic",
+                fontSize: 76,
+                fontWeight: 200,
                 color: "#fffff8",
                 lineHeight: 1.05,
-                letterSpacing: "0.02em",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
                 margin: 0,
               }}
             >
@@ -121,12 +120,12 @@ export default function OGImage() {
             </h1>
             <h1
               style={{
-                fontSize: 82,
-                fontWeight: 400,
-                fontStyle: "normal",
+                fontSize: 76,
+                fontWeight: 200,
                 color: "#fffff8",
                 lineHeight: 1.05,
-                letterSpacing: "0.06em",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
                 margin: "4px 0 0 0",
               }}
             >
@@ -139,7 +138,7 @@ export default function OGImage() {
                 display: "flex",
                 alignItems: "center",
                 gap: 20,
-                marginTop: 32,
+                marginTop: 28,
               }}
             >
               <div
@@ -151,11 +150,11 @@ export default function OGImage() {
               />
               <span
                 style={{
-                  fontFamily: "'Geist', 'Helvetica Neue', sans-serif",
-                  fontSize: 14,
+                  fontSize: 11,
                   letterSpacing: "0.3em",
                   textTransform: "uppercase",
                   color: "rgba(212,206,200,0.6)",
+                  fontWeight: 300,
                 }}
               >
                 Atemporalidad &middot; Existencia &middot; Materialidad
@@ -163,13 +162,13 @@ export default function OGImage() {
             </div>
 
             {/* URL */}
-            <div style={{ marginTop: 28 }}>
+            <div style={{ marginTop: 24 }}>
               <span
                 style={{
-                  fontFamily: "'Geist', 'Helvetica Neue', sans-serif",
-                  fontSize: 13,
+                  fontSize: 12,
                   letterSpacing: "0.2em",
                   color: "rgba(212,206,200,0.4)",
+                  fontWeight: 300,
                 }}
               >
                 www.jmcarcamo.cl
@@ -183,7 +182,7 @@ export default function OGImage() {
           style={{
             position: "absolute",
             inset: 20,
-            border: "1px solid rgba(212,206,200,0.1)",
+            border: "1px solid rgba(212,206,200,0.08)",
             pointerEvents: "none",
             zIndex: 20,
           }}

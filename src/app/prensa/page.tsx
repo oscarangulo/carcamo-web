@@ -72,7 +72,7 @@ export default function Prensa() {
                 <p className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-4">
                   Prensa y Medios
                 </p>
-                <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-light tracking-wide italic leading-[1.1]">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-extralight tracking-[0.05em] uppercase leading-[1.1]">
                   En los medios
                 </h1>
               </FadeIn>
@@ -94,7 +94,7 @@ export default function Prensa() {
             {quotes.map((quote, i) => (
               <FadeIn key={quote.author} delay={i * 0.15}>
                 <blockquote className="max-w-4xl">
-                  <p className="font-heading text-2xl md:text-4xl lg:text-5xl font-light italic tracking-wide leading-[1.3]">
+                  <p className="text-2xl md:text-3xl lg:text-4xl font-extralight tracking-wide leading-relaxed">
                     &ldquo;{quote.text}&rdquo;
                   </p>
                   <footer className="mt-8">
@@ -131,7 +131,7 @@ export default function Prensa() {
                     </span>
                   </div>
                   <div className="col-span-10 md:col-span-7">
-                    <span className="font-heading text-base md:text-lg font-normal italic tracking-wide group-hover:text-warm-gray transition-colors">
+                    <span className="text-base md:text-lg font-light tracking-wide group-hover:text-warm-gray transition-colors">
                       {item.title}
                     </span>
                   </div>
@@ -175,7 +175,7 @@ export default function Prensa() {
                     <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/5 transition-colors duration-500" />
                   </div>
                   <div className="mt-4">
-                    <h3 className="font-heading text-base italic tracking-wide font-normal">
+                    <h3 className="text-sm tracking-[0.1em] font-light">
                       {clipping.title}
                     </h3>
                   </div>
@@ -197,7 +197,7 @@ export default function Prensa() {
               {mediaOutlets.map((outlet) => (
                 <span
                   key={outlet}
-                  className="font-heading text-xl md:text-2xl font-light italic tracking-wide text-warm-gray"
+                  className="text-lg md:text-xl font-extralight tracking-wide text-warm-gray"
                 >
                   {outlet}
                 </span>
@@ -255,7 +255,7 @@ export default function Prensa() {
                 sizes="90vw"
               />
               <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-charcoal/80 to-transparent">
-                <h3 className="font-heading text-cream text-xl italic font-light tracking-wide">
+                <h3 className="text-cream text-lg font-light tracking-wide">
                   {selectedClipping.title}
                 </h3>
               </div>
