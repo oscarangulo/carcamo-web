@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/jm-carcamo.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "José Miguel Cárcamo — Escultor chileno",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     title: "José Miguel Cárcamo — Escultor",
     description:
       "Escultor chileno con más de 25 años dedicados a la escultura en piedra basalto.",
-    images: ["/images/jm-carcamo.png"],
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,

@@ -1,0 +1,67 @@
+- generic [active] [ref=e1]:
+  - link "Ir al contenido principal" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e5]:
+      - link "Escultor Cárcamo" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e7]:
+          - generic [ref=e8]: Escultor
+          - generic [ref=e9]: Cárcamo
+      - navigation [ref=e10]:
+        - link "Inicio" [ref=e11] [cursor=pointer]:
+          - /url: /
+        - link "Trayectoria" [ref=e12] [cursor=pointer]:
+          - /url: /trayectoria
+        - link "Portafolio" [ref=e13] [cursor=pointer]:
+          - /url: /portafolio
+        - link "Proceso" [ref=e14] [cursor=pointer]:
+          - /url: /proceso
+        - link "Bocetos" [ref=e15] [cursor=pointer]:
+          - /url: /bocetos
+        - link "Contacto" [ref=e16] [cursor=pointer]:
+          - /url: /contacto
+  - main [ref=e17]:
+    - generic [ref=e21]:
+      - generic [ref=e22]: Escultor — Santiago de Chile
+      - generic [ref=e23]:
+        - heading "José Miguel" [level=1] [ref=e24]
+        - heading "Cárcamo" [level=1] [ref=e25]
+        - generic [ref=e28]: Atemporalidad · Existencia · Materialidad
+        - generic [ref=e29]: carcamo.strixsoft.com
+  - contentinfo [ref=e30]:
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]:
+            - generic [ref=e35]: Escultor
+            - generic [ref=e36]: José Miguel Cárcamo
+          - paragraph [ref=e37]: Atemporalidad, Existencia, Materialidad
+        - generic [ref=e38]:
+          - heading "Navegación" [level=4] [ref=e39]
+          - navigation [ref=e40]:
+            - link "Trayectoria" [ref=e41] [cursor=pointer]:
+              - /url: /trayectoria
+            - link "Portafolio" [ref=e42] [cursor=pointer]:
+              - /url: /portafolio
+            - link "Proceso de Obra" [ref=e43] [cursor=pointer]:
+              - /url: /proceso
+            - link "Bocetos" [ref=e44] [cursor=pointer]:
+              - /url: /bocetos
+            - link "Contacto" [ref=e45] [cursor=pointer]:
+              - /url: /contacto
+        - generic [ref=e46]:
+          - heading "Contacto" [level=4] [ref=e47]
+          - generic [ref=e48]:
+            - link "jmcf68@gmail.com" [ref=e49] [cursor=pointer]:
+              - /url: mailto:jmcf68@gmail.com
+            - link "+56 9 8790 6530" [ref=e50] [cursor=pointer]:
+              - /url: tel:+56987906530
+            - link "@josemiguelcarcamo" [ref=e51] [cursor=pointer]:
+              - /url: https://www.instagram.com/josemiguelcarcamo
+            - paragraph [ref=e52]: Santiago de Chile
+      - generic [ref=e53]:
+        - paragraph [ref=e54]: © 2026 José Miguel Cárcamo Fonseca
+        - paragraph [ref=e55]: Todos los derechos reservados
+  - button "Open Next.js Dev Tools" [ref=e61] [cursor=pointer]:
+    - img [ref=e62]
