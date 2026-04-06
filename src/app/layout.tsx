@@ -38,28 +38,29 @@ export const metadata: Metadata = {
   authors: [{ name: "José Miguel Cárcamo Fonseca" }],
   creator: "José Miguel Cárcamo Fonseca",
   openGraph: {
-    title: "José Miguel Cárcamo — Escultor",
+    title: "José Miguel Cárcamo — Escultor Chileno | Escultura en Piedra",
     description:
-      "Escultor chileno con más de 25 años dedicados a la escultura en piedra basalto. Obra pública internacional.",
+      "Más de 25 años dedicados a la escultura en piedra basalto. Obra pública en 13 países. Descubre su portafolio, proceso creativo y trayectoria internacional.",
     url: "https://carcamo.strixsoft.com",
     siteName: "José Miguel Cárcamo — Escultor",
     locale: "es_CL",
     type: "website",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "José Miguel Cárcamo — Escultor chileno",
+        alt: "José Miguel Cárcamo — Escultor chileno junto a su escultura monumental en piedra",
+        type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "José Miguel Cárcamo — Escultor",
+    title: "José Miguel Cárcamo — Escultor Chileno | Escultura en Piedra",
     description:
-      "Escultor chileno con más de 25 años dedicados a la escultura en piedra basalto.",
-    images: ["/og-image.png"],
+      "Más de 25 años dedicados a la escultura en piedra basalto. Obra pública en 13 países. Descubre su portafolio y trayectoria internacional.",
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -85,7 +86,7 @@ const jsonLd = {
   description:
     "Escultor chileno con más de 25 años dedicados a la escultura en piedra basalto.",
   url: "https://carcamo.strixsoft.com",
-  image: "https://carcamo.strixsoft.com/images/jm-carcamo.png",
+  image: "https://carcamo.strixsoft.com/og-image.jpg",
   email: "jmcf68@gmail.com",
   telephone: "+56987906530",
   address: {
