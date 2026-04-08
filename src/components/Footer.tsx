@@ -82,12 +82,14 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} José Miguel Cárcamo Fonseca
           </p>
           <p className="text-[11px] tracking-[0.15em] text-stone">
-            Diseño y desarrollo por{" "}
+            Diseñado por{" "}
             <a
-              href="mailto:oscarangulo.dev@gmail.com"
+              href="https://strixsoft.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-warm-gray transition-colors duration-300"
             >
-              Oscar Angulo
+              Strixsoft
             </a>
           </p>
         </div>
