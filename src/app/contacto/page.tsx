@@ -9,8 +9,10 @@ export default function Contacto() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const mailtoLink = `mailto:jmcf68@gmail.com?subject=${encodeURIComponent(formState.asunto)}&body=${encodeURIComponent(`De: ${formState.nombre}\nEmail: ${formState.email}\n\n${formState.mensaje}`)}`;
-    window.location.href = mailtoLink;
+    const phone = "56987906530";
+    const text = `*Contacto desde jmcarcamo.cl*\n\n*Nombre:* ${formState.nombre}\n*Email:* ${formState.email}\n*Asunto:* ${formState.asunto}\n\n*Mensaje:*\n${formState.mensaje}`;
+    const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+    window.open(whatsappUrl, "_blank");
     setSubmitted(true);
   };
 
