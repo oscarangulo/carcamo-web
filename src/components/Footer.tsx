@@ -82,7 +82,13 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} José Miguel Cárcamo Fonseca
           </p>
           <p className="text-[11px] tracking-[0.15em] text-stone">
-            Todos los derechos reservados
+            Diseño y desarrollo por{" "}
+            <a
+              href="mailto:oscarangulo.dev@gmail.com"
+              className="hover:text-warm-gray transition-colors duration-300"
+            >
+              Oscar Angulo
+            </a>
           </p>
         </div>
       </div>

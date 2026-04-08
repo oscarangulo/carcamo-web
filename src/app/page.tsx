@@ -113,6 +113,76 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* Lo Último */}
+      <section className="py-24 md:py-32 px-6 bg-charcoal text-cream">
+        <div className="max-w-[1400px] mx-auto">
+          <FadeIn>
+            <p className="text-[10px] tracking-[0.3em] uppercase text-stone mb-12 md:mb-16">
+              Lo Último
+            </p>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+            {/* Image */}
+            <FadeIn className="md:col-span-6" direction="left">
+              <div className="img-zoom aspect-[4/3] relative bg-stone/10">
+                <Image
+                  src="/images/arabia-saudita-volutas-noche.jpg"
+                  alt="Escultura monumental en el Festival Riyadh Art 2026, Arabia Saudita"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            </FadeIn>
+
+            {/* Text */}
+            <div className="md:col-span-5 md:col-start-8 flex flex-col justify-center">
+              <FadeIn delay={0.2}>
+                <p className="text-[10px] tracking-[0.3em] uppercase text-stone mb-4">
+                  Febrero 2026 &mdash; Arabia Saudita
+                </p>
+                <h2 className="text-2xl md:text-3xl font-extralight tracking-wide leading-snug mb-6">
+                  Festival Riyadh Art 2026
+                </h2>
+                <p className="text-sm md:text-base text-stone leading-relaxed mb-6">
+                  Participación en el programa Tuwaiq Sculpture del Festival
+                  Riyadh Art, una de las mayores iniciativas de arte público del
+                  mundo. Tres semanas de trabajo transformando bloques de granito
+                  en una escultura dual inspirada en los sistemas de
+                  desalinización del desierto.
+                </p>
+                <blockquote className="text-base md:text-lg font-extralight leading-relaxed tracking-wide text-cream/80 border-l border-stone/30 pl-6 mb-8">
+                  &ldquo;Participar en Riyadh Art ha sido un desafío y un honor.
+                  Fue la oportunidad de demostrar que el arte chileno tiene un
+                  lenguaje universal capaz de conectar con audiencias de todo el
+                  mundo.&rdquo;
+                </blockquote>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href="https://www.elmostrador.cl/cultura/2026/02/13/escultor-chileno-jose-miguel-carcamo-participo-en-el-festival-riyadh-art-en-arabia-saudita/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[11px] tracking-[0.25em] uppercase border border-stone/30 px-8 py-3 hover:bg-cream hover:text-charcoal transition-all duration-500 text-center cursor-pointer"
+                  >
+                    Leer en El Mostrador
+                  </a>
+                  <Link
+                    href="/prensa"
+                    className="text-[11px] tracking-[0.25em] uppercase text-stone hover:text-cream transition-colors duration-300 py-3 text-center cursor-pointer group"
+                  >
+                    Más prensa
+                    <span className="inline-block ml-2 transition-transform duration-300 group-hover:translate-x-2">
+                      &rarr;
+                    </span>
+                  </Link>
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Statement */}
       <section className="py-24 md:py-40 px-6">
         <div className="max-w-[1400px] mx-auto">

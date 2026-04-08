@@ -24,6 +24,8 @@ const quotes = [
 ];
 
 const pressCoverage = [
+  { year: "2026", title: "Escultor chileno José Miguel Cárcamo participó en el festival Riyadh Art en Arabia Saudita", source: "El Mostrador", link: "https://www.elmostrador.cl/cultura/2026/02/13/escultor-chileno-jose-miguel-carcamo-participo-en-el-festival-riyadh-art-en-arabia-saudita/" },
+  { year: "2026", title: "El Silencioso Lenguaje del Material — Entrevista por Francisco Javier Paredes", source: "Spacio Nómade" },
   { year: "2014", title: "Artistas de Chile y el exterior crean parque de esculturas en Peñalolén", source: "La Tercera" },
   { year: "2014", title: "Este domingo se inaugura el Parque de las Esculturas de Peñalolén", source: "La Tercera" },
   { year: "2014", title: "Peñalolén inaugura un nuevo parque de las esculturas", source: "Radio Bio Bio" },
@@ -48,13 +50,14 @@ const pressClippings = [
 ];
 
 const mediaOutlets = [
+  "El Mostrador",
   "El Mercurio",
   "La Tercera",
   "Publimetro",
   "Emol",
   "Radio Bio Bio",
   "TVN",
-  "Terra",
+  "Spacio Nómade",
   "Revista Caras",
 ];
 
@@ -122,8 +125,8 @@ export default function Prensa() {
           </FadeIn>
 
           <div className="space-y-0">
-            {pressCoverage.map((item, i) => (
-              <FadeIn key={item.year + item.title} delay={i * 0.06}>
+            {pressCoverage.map((item, i) => {
+              const inner = (
                 <div className="grid grid-cols-12 gap-4 py-6 border-b border-stone/20 group">
                   <div className="col-span-2 md:col-span-1">
                     <span className="text-sm text-warm-gray font-light">
@@ -133,6 +136,7 @@ export default function Prensa() {
                   <div className="col-span-10 md:col-span-7">
                     <span className="text-base md:text-lg font-light tracking-wide group-hover:text-warm-gray transition-colors">
                       {item.title}
+                      {"link" in item && <span className="ml-2 text-[10px] tracking-[0.2em] uppercase text-stone">&rarr;</span>}
                     </span>
                   </div>
                   <div className="col-span-12 md:col-span-4 md:text-right">
@@ -141,8 +145,15 @@ export default function Prensa() {
                     </span>
                   </div>
                 </div>
-              </FadeIn>
-            ))}
+              );
+              return (
+                <FadeIn key={item.year + item.title} delay={i * 0.06}>
+                  {"link" in item ? (
+                    <a href={(item as { link: string }).link} target="_blank" rel="noopener noreferrer" className="block cursor-pointer">{inner}</a>
+                  ) : inner}
+                </FadeIn>
+              );
+            })}
           </div>
         </div>
       </section>
