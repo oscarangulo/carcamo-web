@@ -273,29 +273,6 @@ export default function Trayectoria() {
         </div>
       </section>
 
-      {/* Jeff Koons Photo */}
-      <section className="py-16 md:py-24 px-6 border-t border-stone/30">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-            <div className="md:col-span-6 md:col-start-4">
-              <FadeIn>
-                <div className="aspect-[4/3] relative bg-stone/20">
-                  <Image
-                    src="/images/con-jeff-koons.jpg"
-                    alt="José Miguel Cárcamo junto a Jeff Koons"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-                <p className="text-sm text-warm-gray mt-4 text-center font-light tracking-wide">
-                  Junto a Jeff Koons
-                </p>
-              </FadeIn>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Obra Pública Histórica */}
       <section className="py-16 md:py-24 px-6 border-t border-stone/30">
