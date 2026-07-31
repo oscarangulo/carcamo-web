@@ -8,3 +8,15 @@ AGENTS.md
 docker-compose*.yml
 Dockerfile
 .dockerignore
+
+# Material fuente pesado: no entra a la imagen (public/ ya tiene las imágenes optimizadas)
+contenido/
+prensa.pdf
+imagenesNuevas/
+
+# Artefactos de herramientas
+test-results/
+.playwright-mcp/
+.claude/
+.DS_Store
+**/.DS_Store

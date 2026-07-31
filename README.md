@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# carcamo-web
 
-## Getting Started
+Sitio portafolio del escultor **José Miguel Cárcamo** — https://www.jmcarcamo.cl/
 
-First, run the development server:
+Next.js 16 con App Router, React 19 y Tailwind v4. **No hay CMS ni base de datos**: todo el
+contenido (obras, textos, prensa, trayectoria) está hardcodeado en los `.tsx` de `src/app/`.
+Para cambiar un texto o agregar una obra se edita el componente y se vuelve a desplegar.
+
+## Desarrollo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # build de producción (genera .next/standalone)
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deploy
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**No hay CI.** El build de la imagen se hace a mano desde el equipo del desarrollador, se
+publica en GHCR y Coolify hace el pull.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+docker buildx build --platform linux/amd64 -t ghcr.io/oscarangulo/carcamo-web:latest --push .
+```
 
-## Learn More
+### `--platform linux/amd64` no es opcional
 
-To learn more about Next.js, take a look at the following resources:
+El VPS es **amd64** y el build normalmente se hace en un **Mac ARM**. Si omites el flag, buildx
+usa la arquitectura local, la imagen sale **arm64** y el contenedor no arranca en el servidor:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+exec format error
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Si aparece ese error en los logs de Coolify, es esto: reconstruye con el flag y vuelve a pushear.
 
-## Deploy on Vercel
+## Infraestructura
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Coolify** en un VPS de Hostinger.
+- **Traefik** como proxy, con **TLS de Let's Encrypt** automático.
+- El servicio corre detrás de la red externa `coolify` y expone el puerto **3000**
+  (ver `docker-compose.yml`).
+- El **enrutamiento del dominio y el TLS se configuran en la UI de Coolify**, no en este repo.
+- `/healthz` responde `ok` en texto plano; es el endpoint que usa el healthcheck del contenedor.
+- El redirect de `jmcarcamo.cl` a `www.jmcarcamo.cl` (301) vive en `next.config.ts`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Nota sobre `contenido/`
+
+`contenido/` es material fuente pesado (fotos originales, PDFs, textos de la web antigua): más de
+1 GB que **está en el historial de git**. Está en `.dockerignore`, así que **no se copia a la
+imagen**. Las imágenes que el sitio realmente sirve son las optimizadas de `public/images/`.

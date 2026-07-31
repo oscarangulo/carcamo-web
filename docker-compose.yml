@@ -1,6 +1,8 @@
 services:
   web:
     image: ghcr.io/oscarangulo/carcamo-web:latest
+    # El tag es :latest, así que sin esto Coolify puede levantar una imagen vieja de su caché local.
+    pull_policy: always
     expose:
       - "3000"
     environment:
@@ -11,7 +13,9 @@ services:
     networks:
       - coolify
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/"]
+      # 127.0.0.1 y no localhost: en Alpine /etc/hosts resuelve localhost a ::1 primero, el wget de
+      # busybox se va por IPv6 y Next solo bindea 0.0.0.0 => connection refused eterno.
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:3000/healthz"]
       interval: 30s
       timeout: 10s
       retries: 3

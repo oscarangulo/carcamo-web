@@ -22,11 +22,17 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+# --ingroup nodejs es obligatorio: sin esto el usuario queda en gid 65533 (nogroup)
+# y los --chown=nextjs:nodejs de abajo no le dan acceso por grupo.
+RUN adduser --system --uid 1001 --ingroup nodejs nextjs
 
-COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+# Blindaje: el working copy puede traer directorios en 700 (filesystem que no preserva permisos).
+# Next 16 escanea public/ al arrancar y muere con EACCES si no puede hacer scandir.
+RUN chmod -R a+rX /app/public
 
 USER nextjs
 
