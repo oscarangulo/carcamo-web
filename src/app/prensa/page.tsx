@@ -69,7 +69,7 @@ const pressClippings: LightboxItem[] = [
   },
   {
     src: "/images/prensa-nikitin-form-bio.jpg",
-    title: "Nikitin Form — Perfil del artista",
+    title: "Nikitin Form — Opinión sobre su obra",
     link: { href: NIKITIN_FORM_ISSUE_URL, label: "Ver la edición completa" },
   },
   { src: "/images/prensa-el-mercurio-lecturas-esenciales.jpg", title: "El Mercurio — Lecturas Esenciales" },

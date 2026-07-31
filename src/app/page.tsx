@@ -129,7 +129,7 @@ export default function Home() {
                 <div className="img-zoom aspect-[3/4] relative bg-stone/10">
                   <Image
                     src="/images/prensa-nikitin-form-apertura.jpg"
-                    alt="Apertura del perfil de José Miguel Cárcamo en Nikitin Form, julio 2026"
+                    alt="Apertura del artículo sobre José Miguel Cárcamo en Nikitin Form, julio 2026"
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 42vw"
@@ -147,8 +147,8 @@ export default function Home() {
                   </h2>
                   <p className="text-sm md:text-base text-stone leading-relaxed mb-8">
                     Nikitin Form seleccionó a José Miguel Cárcamo como artista destacado en su edición
-                    de julio 2026. La publicación de escultura contemporánea de Nikitin Mag le dedica
-                    un perfil a su trabajo en piedra.
+                    de julio 2026. La publicación de Nikitin Mag dedica una opinión acerca de su
+                    trabajo en Escultura Contemporánea.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <a
