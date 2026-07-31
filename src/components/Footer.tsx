@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FOOTER_NAV_ITEMS } from "@/lib/nav";
 
 export default function Footer() {
   return (
@@ -25,15 +26,8 @@ export default function Footer() {
             <h4 className="text-[10px] tracking-[0.3em] uppercase text-warm-gray mb-6">
               Navegación
             </h4>
-            <nav className="flex flex-col gap-3">
-              {[
-                { href: "/trayectoria", label: "Trayectoria" },
-                { href: "/portafolio", label: "Portafolio" },
-                { href: "/proceso", label: "Proceso de Obra" },
-                { href: "/bocetos", label: "Bocetos" },
-                { href: "/prensa", label: "Prensa" },
-                { href: "/contacto", label: "Contacto" },
-              ].map((item) => (
+            <nav className="flex flex-col gap-3" aria-label="Navegación del pie de página">
+              {FOOTER_NAV_ITEMS.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -77,17 +71,19 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-16 pt-8 border-t border-stone/30 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div
+          className="mt-16 pt-8 border-t border-stone/30 flex flex-col md:flex-row justify-between items-center gap-4"
+        >
           <p className="text-[11px] tracking-[0.15em] text-warm-gray">
             &copy; {new Date().getFullYear()} José Miguel Cárcamo Fonseca
           </p>
-          <p className="text-[11px] tracking-[0.15em] text-stone">
+          <p className="text-[11px] tracking-[0.15em] text-charcoal/65">
             Diseñado por{" "}
             <a
               href="https://strixsoft.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-warm-gray transition-colors duration-300"
+              className="hover:text-charcoal transition-colors duration-300"
             >
               Strixsoft
             </a>

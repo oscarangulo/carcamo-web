@@ -1,7 +1,15 @@
-"use client";
-
+import type { Metadata } from "next";
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
+import { pageMetadata } from "@/lib/metadata";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Trayectoria",
+  description:
+    "Más de 25 años dedicados a la escultura. Exposiciones individuales, simposios internacionales y " +
+    "obra pública en 14 países.",
+  path: "/trayectoria",
+});
 
 const exhibitions = [
   { year: "2007", title: "Cadencias / Fisuras", venue: "Estación Mapocho, Hall Central, Santiago" },
@@ -83,12 +91,12 @@ export default function Trayectoria() {
             <FadeIn className="md:col-span-5" direction="left">
               <div className="aspect-[3/4] relative bg-stone/20 sticky top-32">
                 <Image
-                  src="/images/jm-carcamo.png"
+                  src="/images/jm-carcamo.webp"
                   alt="José Miguel Cárcamo Fonseca — Escultor chileno junto a su obra"
                   fill
                   className="object-cover object-top"
                   sizes="(max-width: 768px) 100vw, 40vw"
-                  priority
+                  preload
                 />
               </div>
             </FadeIn>

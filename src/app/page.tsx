@@ -40,7 +40,7 @@ export default function Home() {
             fill
             className="object-cover opacity-30"
             style={{ objectPosition: "center center" }}
-            priority
+            preload
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-cream/40 via-cream/30 to-cream" />
@@ -122,62 +122,104 @@ export default function Home() {
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
-            {/* Image */}
-            <FadeIn className="md:col-span-6" direction="left">
-              <div className="img-zoom aspect-[4/3] relative bg-stone/10">
-                <Image
-                  src="/images/arabia-saudita-volutas-noche.jpg"
-                  alt="Escultura monumental en el Festival Riyadh Art 2026, Arabia Saudita"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </FadeIn>
-
-            {/* Text */}
-            <div className="md:col-span-5 md:col-start-8 flex flex-col justify-center">
-              <FadeIn delay={0.2}>
-                <p className="text-[10px] tracking-[0.3em] uppercase text-stone mb-4">
-                  Febrero 2026 &mdash; Arabia Saudita
-                </p>
-                <h2 className="text-2xl md:text-3xl font-extralight tracking-wide leading-snug mb-6">
-                  Festival Riyadh Art 2026
-                </h2>
-                <p className="text-sm md:text-base text-stone leading-relaxed mb-6">
-                  Participación en el programa Tuwaiq Sculpture del Festival
-                  Riyadh Art, una de las mayores iniciativas de arte público del
-                  mundo. Tres semanas de trabajo transformando bloques de granito
-                  en una escultura dual inspirada en los sistemas de
-                  desalinización del desierto.
-                </p>
-                <blockquote className="text-base md:text-lg font-extralight leading-relaxed tracking-wide text-cream/80 border-l border-stone/30 pl-6 mb-8">
-                  &ldquo;Participar en Riyadh Art ha sido un desafío y un honor.
-                  Fue la oportunidad de demostrar que el arte chileno tiene un
-                  lenguaje universal capaz de conectar con audiencias de todo el
-                  mundo.&rdquo;
-                </blockquote>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <a
-                    href="https://www.elmostrador.cl/cultura/2026/02/13/escultor-chileno-jose-miguel-carcamo-participo-en-el-festival-riyadh-art-en-arabia-saudita/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[11px] tracking-[0.25em] uppercase border border-stone/30 px-8 py-3 hover:bg-cream hover:text-charcoal transition-all duration-500 text-center cursor-pointer"
-                  >
-                    Leer en El Mostrador
-                  </a>
-                  <Link
-                    href="/prensa"
-                    className="text-[11px] tracking-[0.25em] uppercase text-stone hover:text-cream transition-colors duration-300 py-3 text-center cursor-pointer group"
-                  >
-                    Más prensa
-                    <span className="inline-block ml-2 transition-transform duration-300 group-hover:translate-x-2">
-                      &rarr;
-                    </span>
-                  </Link>
+          <div className="space-y-24 md:space-y-32">
+            {/* Nikitin Form — imagen a la izquierda */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+              <FadeIn className="md:col-span-5" direction="left">
+                <div className="img-zoom aspect-[3/4] relative bg-stone/10">
+                  <Image
+                    src="/images/prensa-nikitin-form-apertura.jpg"
+                    alt="Apertura del perfil de José Miguel Cárcamo en Nikitin Form, julio 2026"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 42vw"
+                  />
                 </div>
               </FadeIn>
+
+              <div className="md:col-span-6 md:col-start-7 flex flex-col justify-center">
+                <FadeIn delay={0.2}>
+                  <p className="text-[10px] tracking-[0.3em] uppercase text-stone mb-4">
+                    Julio 2026 &mdash; Brooklyn, Nueva York
+                  </p>
+                  <h2 className="text-2xl md:text-3xl font-extralight tracking-wide leading-snug mb-6">
+                    Nikitin Form &mdash; Contemporary Sculpture Spotlight
+                  </h2>
+                  <p className="text-sm md:text-base text-stone leading-relaxed mb-8">
+                    Nikitin Form seleccionó a José Miguel Cárcamo como artista destacado en su edición
+                    de julio 2026. La publicación de escultura contemporánea de Nikitin Mag le dedica
+                    un perfil a su trabajo en piedra.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <a
+                      href="https://www.nikitinmag.com/reader?issue=nikitinform/july-2026"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[11px] tracking-[0.25em] uppercase border border-stone/30 px-8 py-3 hover:bg-cream hover:text-charcoal transition-all duration-500 text-center cursor-pointer"
+                    >
+                      Ver la edición
+                    </a>
+                  </div>
+                </FadeIn>
+              </div>
+            </div>
+
+            {/* Riyadh Art — imagen a la derecha, alterna con la entrada de arriba */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+              <FadeIn className="md:col-span-6 md:col-start-7 md:row-start-1" direction="right">
+                <div className="img-zoom aspect-[4/3] relative bg-stone/10">
+                  <Image
+                    src="/images/arabia-saudita-volutas-noche.jpg"
+                    alt="Escultura monumental en el Festival Riyadh Art 2026, Arabia Saudita"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+              </FadeIn>
+
+              <div className="md:col-span-5 md:col-start-1 md:row-start-1 flex flex-col justify-center">
+                <FadeIn delay={0.2}>
+                  <p className="text-[10px] tracking-[0.3em] uppercase text-stone mb-4">
+                    Febrero 2026 &mdash; Arabia Saudita
+                  </p>
+                  <h2 className="text-2xl md:text-3xl font-extralight tracking-wide leading-snug mb-6">
+                    Festival Riyadh Art 2026
+                  </h2>
+                  <p className="text-sm md:text-base text-stone leading-relaxed mb-6">
+                    Participación en el programa Tuwaiq Sculpture del Festival
+                    Riyadh Art, una de las mayores iniciativas de arte público del
+                    mundo. Tres semanas de trabajo transformando bloques de granito
+                    en una escultura dual inspirada en los sistemas de
+                    desalinización del desierto.
+                  </p>
+                  <blockquote className="text-base md:text-lg font-extralight leading-relaxed tracking-wide text-cream/80 border-l border-stone/30 pl-6 mb-8">
+                    &ldquo;Participar en Riyadh Art ha sido un desafío y un honor.
+                    Fue la oportunidad de demostrar que el arte chileno tiene un
+                    lenguaje universal capaz de conectar con audiencias de todo el
+                    mundo.&rdquo;
+                  </blockquote>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <a
+                      href="https://www.elmostrador.cl/cultura/2026/02/13/escultor-chileno-jose-miguel-carcamo-participo-en-el-festival-riyadh-art-en-arabia-saudita/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[11px] tracking-[0.25em] uppercase border border-stone/30 px-8 py-3 hover:bg-cream hover:text-charcoal transition-all duration-500 text-center cursor-pointer"
+                    >
+                      Leer en El Mostrador
+                    </a>
+                    <Link
+                      href="/prensa"
+                      className="text-[11px] tracking-[0.25em] uppercase text-stone hover:text-cream transition-colors duration-300 py-3 text-center cursor-pointer group"
+                    >
+                      Más prensa
+                      <span className="inline-block ml-2 transition-transform duration-300 group-hover:translate-x-2">
+                        &rarr;
+                      </span>
+                    </Link>
+                  </div>
+                </FadeIn>
+              </div>
             </div>
           </div>
         </div>

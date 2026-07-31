@@ -3,17 +3,32 @@
 import FadeIn from "@/components/FadeIn";
 import { useState, FormEvent } from "react";
 
+const WHATSAPP_PHONE = "56987906530";
+
+const EMPTY_FORM = { nombre: "", email: "", asunto: "", mensaje: "" };
+
 export default function Contacto() {
-  const [formState, setFormState] = useState({ nombre: "", email: "", asunto: "", mensaje: "" });
+  const [formState, setFormState] = useState(EMPTY_FORM);
   const [submitted, setSubmitted] = useState(false);
+  // Si el navegador bloquea el popup guardamos la URL para ofrecer el enlace a mano.
+  const [blockedUrl, setBlockedUrl] = useState<string | null>(null);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const phone = "56987906530";
-    const text = `*Contacto desde jmcarcamo.cl*\n\n*Nombre:* ${formState.nombre}\n*Email:* ${formState.email}\n*Asunto:* ${formState.asunto}\n\n*Mensaje:*\n${formState.mensaje}`;
-    const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-    window.open(whatsappUrl, "_blank");
-    setSubmitted(true);
+    const text =
+      `*Contacto desde jmcarcamo.cl*\n\n*Nombre:* ${formState.nombre}\n` +
+      `*Email:* ${formState.email}\n*Asunto:* ${formState.asunto}\n\n*Mensaje:*\n${formState.mensaje}`;
+    const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
+
+    // Buena parte del tráfico llega desde el navegador interno de Instagram, que bloquea
+    // window.open. Antes se marcaba el envío como exitoso igual, así que el visitante veía
+    // "gracias por su mensaje" sin que se hubiera abierto nada.
+    const opened = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    if (opened) {
+      setSubmitted(true);
+    } else {
+      setBlockedUrl(whatsappUrl);
+    }
   };
 
   return (
@@ -67,32 +82,61 @@ export default function Contacto() {
               <FadeIn delay={0.2}>
                 {submitted ? (
                   <div className="text-center py-20">
-                    <p className="text-3xl font-extralight tracking-wide mb-4">Gracias por su mensaje</p>
-                    <p className="text-sm text-warm-gray">Responderé a la brevedad posible.</p>
+                    <p className="text-3xl font-extralight tracking-wide mb-4">Se abrió WhatsApp</p>
+                    <p className="text-sm text-warm-gray">
+                      Su mensaje quedó escrito en la conversación. Presione enviar en WhatsApp
+                      para que me llegue.
+                    </p>
                     <button
-                      onClick={() => { setSubmitted(false); setFormState({ nombre: "", email: "", asunto: "", mensaje: "" }); }}
+                      type="button"
+                      onClick={() => { setSubmitted(false); setFormState(EMPTY_FORM); }}
                       className="mt-8 text-[11px] tracking-[0.25em] uppercase text-warm-gray hover:text-charcoal transition-colors cursor-pointer"
                     >
-                      Enviar otro mensaje
+                      Escribir otro mensaje
                     </button>
                   </div>
+                ) : blockedUrl ? (
+                  <div className="text-center py-20">
+                    <p className="text-3xl font-extralight tracking-wide mb-4">Abra WhatsApp para enviarlo</p>
+                    <p className="text-sm text-warm-gray max-w-md mx-auto">
+                      Su navegador bloqueó la ventana emergente. Use este enlace para abrir
+                      WhatsApp con el mensaje ya escrito.
+                    </p>
+                    <a
+                      href={blockedUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block mt-8 text-[11px] tracking-[0.25em] uppercase border border-charcoal/20 px-10 py-4 hover:bg-charcoal hover:text-cream transition-all duration-500"
+                    >
+                      Abrir WhatsApp
+                    </a>
+                    <div>
+                      <button
+                        type="button"
+                        onClick={() => setBlockedUrl(null)}
+                        className="mt-8 text-[11px] tracking-[0.25em] uppercase text-warm-gray hover:text-charcoal transition-colors cursor-pointer"
+                      >
+                        Volver al formulario
+                      </button>
+                    </div>
+                  </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-8" noValidate>
+                  <form onSubmit={handleSubmit} className="space-y-8">
                     <div>
                       <label htmlFor="nombre" className="text-[10px] tracking-[0.3em] uppercase text-warm-gray block mb-3">Nombre</label>
-                      <input id="nombre" type="text" required value={formState.nombre} onChange={(e) => setFormState({ ...formState, nombre: e.target.value })} className="w-full bg-transparent border-b border-stone/40 pb-3 text-sm font-light focus:outline-none focus:border-charcoal transition-colors duration-300 placeholder:text-stone" placeholder="Su nombre" autoComplete="name" />
+                      <input id="nombre" type="text" required value={formState.nombre} onChange={(e) => setFormState({ ...formState, nombre: e.target.value })} className="w-full bg-transparent border-b border-stone/40 pb-3 text-sm font-light focus:outline-none focus:border-charcoal transition-colors duration-300 placeholder:text-warm-gray" placeholder="Su nombre" autoComplete="name" />
                     </div>
                     <div>
                       <label htmlFor="email" className="text-[10px] tracking-[0.3em] uppercase text-warm-gray block mb-3">Email</label>
-                      <input id="email" type="email" required value={formState.email} onChange={(e) => setFormState({ ...formState, email: e.target.value })} className="w-full bg-transparent border-b border-stone/40 pb-3 text-sm font-light focus:outline-none focus:border-charcoal transition-colors duration-300 placeholder:text-stone" placeholder="su@email.com" autoComplete="email" />
+                      <input id="email" type="email" required value={formState.email} onChange={(e) => setFormState({ ...formState, email: e.target.value })} className="w-full bg-transparent border-b border-stone/40 pb-3 text-sm font-light focus:outline-none focus:border-charcoal transition-colors duration-300 placeholder:text-warm-gray" placeholder="su@email.com" autoComplete="email" />
                     </div>
                     <div>
                       <label htmlFor="asunto" className="text-[10px] tracking-[0.3em] uppercase text-warm-gray block mb-3">Asunto</label>
-                      <input id="asunto" type="text" required value={formState.asunto} onChange={(e) => setFormState({ ...formState, asunto: e.target.value })} className="w-full bg-transparent border-b border-stone/40 pb-3 text-sm font-light focus:outline-none focus:border-charcoal transition-colors duration-300 placeholder:text-stone" placeholder="Motivo de contacto" />
+                      <input id="asunto" type="text" required value={formState.asunto} onChange={(e) => setFormState({ ...formState, asunto: e.target.value })} className="w-full bg-transparent border-b border-stone/40 pb-3 text-sm font-light focus:outline-none focus:border-charcoal transition-colors duration-300 placeholder:text-warm-gray" placeholder="Motivo de contacto" />
                     </div>
                     <div>
                       <label htmlFor="mensaje" className="text-[10px] tracking-[0.3em] uppercase text-warm-gray block mb-3">Mensaje</label>
-                      <textarea id="mensaje" required rows={5} value={formState.mensaje} onChange={(e) => setFormState({ ...formState, mensaje: e.target.value })} className="w-full bg-transparent border-b border-stone/40 pb-3 text-sm font-light focus:outline-none focus:border-charcoal transition-colors duration-300 resize-none placeholder:text-stone" placeholder="Su mensaje..." />
+                      <textarea id="mensaje" required rows={5} value={formState.mensaje} onChange={(e) => setFormState({ ...formState, mensaje: e.target.value })} className="w-full bg-transparent border-b border-stone/40 pb-3 text-sm font-light focus:outline-none focus:border-charcoal transition-colors duration-300 resize-none placeholder:text-warm-gray" placeholder="Su mensaje..." />
                     </div>
                     <button type="submit" className="text-[11px] tracking-[0.25em] uppercase border border-charcoal/20 px-10 py-4 hover:bg-charcoal hover:text-cream transition-all duration-500 cursor-pointer">
                       Enviar Mensaje

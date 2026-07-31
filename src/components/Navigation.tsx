@@ -2,23 +2,23 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { NAV_ITEMS } from "@/lib/nav";
 
-const navItems = [
-  { href: "/", label: "Inicio" },
-  { href: "/trayectoria", label: "Trayectoria" },
-  { href: "/portafolio", label: "Portafolio" },
-  { href: "/proceso", label: "Proceso" },
-  { href: "/bocetos", label: "Bocetos" },
-  { href: "/prensa", label: "Prensa" },
-  { href: "/contacto", label: "Contacto" },
-];
+const MOBILE_MENU_ID = "menu-movil";
 
 export default function Navigation() {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const toggleButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Guardamos la ruta en la que se abrió el menú en vez de un booleano: así al navegar
+  // (link o botón atrás del navegador) queda cerrado por derivación, sin un useEffect
+  // que llame a setState y dispare renders en cascada.
+  const [openedAtPathname, setOpenedAtPathname] = useState<string | null>(null);
+  const isOpen = openedAtPathname === pathname;
+  const closeMenu = () => setOpenedAtPathname(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -26,14 +26,36 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Escape cierra el menú y devuelve el foco al botón que lo abrió.
   useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
+    if (!isOpen) return;
 
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      setOpenedAtPathname(null);
+      toggleButtonRef.current?.focus();
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [isOpen]);
+
+  // Bloqueo del scroll de fondo, compensando el ancho de la barra para que no salte el layout.
   useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "";
+    if (!isOpen) return;
+
+    const { body, documentElement } = document;
+    const previousOverflow = body.style.overflow;
+    const previousPaddingRight = body.style.paddingRight;
+    const scrollbarWidth = window.innerWidth - documentElement.clientWidth;
+
+    body.style.overflow = "hidden";
+    if (scrollbarWidth > 0) body.style.paddingRight = `${scrollbarWidth}px`;
+
     return () => {
-      document.body.style.overflow = "";
+      body.style.overflow = previousOverflow;
+      body.style.paddingRight = previousPaddingRight;
     };
   }, [isOpen]);
 
@@ -61,15 +83,14 @@ export default function Navigation() {
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-10">
-              {navItems.map((item) => (
+            <nav className="hidden md:flex items-center gap-10" aria-label="Navegación principal">
+              {NAV_ITEMS.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`text-[11px] tracking-[0.2em] uppercase transition-colors duration-300 hover:text-charcoal ${
-                    pathname === item.href
-                      ? "text-charcoal"
-                      : "text-warm-gray"
+                  aria-current={pathname === item.href ? "page" : undefined}
+                  className={`text-[11px] tracking-[0.2em] uppercase transition-colors duration-300 ${
+                    pathname === item.href ? "text-charcoal" : "text-warm-gray hover:text-charcoal"
                   }`}
                 >
                   {item.label}
@@ -86,9 +107,13 @@ export default function Navigation() {
 
             {/* Mobile Menu Button */}
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              type="button"
+              ref={toggleButtonRef}
+              onClick={() => setOpenedAtPathname(isOpen ? null : pathname)}
               className="relative z-50 md:hidden w-8 h-8 flex flex-col justify-center items-center gap-1.5"
-              aria-label="Toggle menu"
+              aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+              aria-expanded={isOpen}
+              aria-controls={MOBILE_MENU_ID}
             >
               <motion.span
                 animate={isOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
@@ -116,14 +141,15 @@ export default function Navigation() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id={MOBILE_MENU_ID}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
             className="fixed inset-0 z-40 bg-cream flex items-center justify-center"
           >
-            <nav className="flex flex-col items-center gap-8">
-              {navItems.map((item, i) => (
+            <nav className="flex flex-col items-center gap-8" aria-label="Navegación móvil">
+              {NAV_ITEMS.map((item, i) => (
                 <motion.div
                   key={item.href}
                   initial={{ opacity: 0, y: 20 }}
@@ -132,6 +158,8 @@ export default function Navigation() {
                 >
                   <Link
                     href={item.href}
+                    onClick={closeMenu}
+                    aria-current={pathname === item.href ? "page" : undefined}
                     className={`text-2xl tracking-[0.2em] uppercase font-light transition-colors ${
                       pathname === item.href
                         ? "text-charcoal"

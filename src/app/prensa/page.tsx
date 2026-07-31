@@ -3,9 +3,16 @@
 import Image from "next/image";
 import { useState } from "react";
 import FadeIn from "@/components/FadeIn";
-import { motion, AnimatePresence } from "framer-motion";
+import Lightbox, { type LightboxItem } from "@/components/Lightbox";
+
+const NIKITIN_FORM_ISSUE_URL = "https://www.nikitinmag.com/reader?issue=nikitinform/july-2026";
 
 const quotes = [
+  {
+    text: "Vale la pena prestar atención a Cárcamo Fonseca por su capacidad para unir la tecnología industrial con la intuición artística, transformando materiales pesados y resistentes en composiciones elegantes que interactúan dinámicamente con la arquitectura y el espacio público.",
+    author: "Nikitin Form",
+    source: "Contemporary Sculpture Spotlight, julio 2026",
+  },
   {
     text: "Sus oscuros granito y basalto, las bellas vetas de la madera petrificada se hallan elaboradas con delicadeza y sensualidad.",
     author: "Waldemar Sommer",
@@ -23,7 +30,20 @@ const quotes = [
   },
 ];
 
-const pressCoverage = [
+interface PressCoverageItem {
+  year: string;
+  title: string;
+  source: string;
+  link?: string;
+}
+
+const pressCoverage: PressCoverageItem[] = [
+  {
+    year: "2026",
+    title: "Contemporary Sculpture Spotlight — Artista destacado en la edición de julio",
+    source: "Nikitin Form — Nikitin Mag, Brooklyn NY",
+    link: NIKITIN_FORM_ISSUE_URL,
+  },
   { year: "2026", title: "Escultor chileno José Miguel Cárcamo participó en el festival Riyadh Art en Arabia Saudita", source: "El Mostrador", link: "https://www.elmostrador.cl/cultura/2026/02/13/escultor-chileno-jose-miguel-carcamo-participo-en-el-festival-riyadh-art-en-arabia-saudita/" },
   { year: "2026", title: "El Silencioso Lenguaje del Material — Entrevista por Francisco Javier Paredes", source: "Spacio Nómade" },
   { year: "2014", title: "Artistas de Chile y el exterior crean parque de esculturas en Peñalolén", source: "La Tercera" },
@@ -41,7 +61,17 @@ const pressCoverage = [
   { year: "1996", title: "Esculturas en piedra — Crítica de Ricardo Bindis", source: "La Tercera" },
 ];
 
-const pressClippings = [
+const pressClippings: LightboxItem[] = [
+  {
+    src: "/images/prensa-nikitin-form-apertura.jpg",
+    title: "Nikitin Form — Julio 2026",
+    link: { href: NIKITIN_FORM_ISSUE_URL, label: "Ver la edición completa" },
+  },
+  {
+    src: "/images/prensa-nikitin-form-bio.jpg",
+    title: "Nikitin Form — Perfil del artista",
+    link: { href: NIKITIN_FORM_ISSUE_URL, label: "Ver la edición completa" },
+  },
   { src: "/images/prensa-el-mercurio-lecturas-esenciales.jpg", title: "El Mercurio — Lecturas Esenciales" },
   { src: "/images/prensa-vivienda-decoracion.jpg", title: "Vivienda y Decoración" },
   { src: "/images/prensa-el-duro-arte-de-esculpir.jpg", title: "El Duro Arte de Esculpir" },
@@ -50,6 +80,7 @@ const pressClippings = [
 ];
 
 const mediaOutlets = [
+  "Nikitin Mag",
   "El Mostrador",
   "El Mercurio",
   "La Tercera",
@@ -62,7 +93,7 @@ const mediaOutlets = [
 ];
 
 export default function Prensa() {
-  const [selectedClipping, setSelectedClipping] = useState<(typeof pressClippings)[0] | null>(null);
+  const [selectedClipping, setSelectedClipping] = useState<LightboxItem | null>(null);
 
   return (
     <>
@@ -136,7 +167,9 @@ export default function Prensa() {
                   <div className="col-span-10 md:col-span-7">
                     <span className="text-base md:text-lg font-light tracking-wide group-hover:text-warm-gray transition-colors">
                       {item.title}
-                      {"link" in item && <span className="ml-2 text-[10px] tracking-[0.2em] uppercase text-stone">&rarr;</span>}
+                      {item.link && (
+                        <span className="ml-2 text-[10px] tracking-[0.2em] uppercase text-stone">&rarr;</span>
+                      )}
                     </span>
                   </div>
                   <div className="col-span-12 md:col-span-4 md:text-right">
@@ -148,8 +181,10 @@ export default function Prensa() {
               );
               return (
                 <FadeIn key={item.year + item.title} delay={i * 0.06}>
-                  {"link" in item ? (
-                    <a href={(item as { link: string }).link} target="_blank" rel="noopener noreferrer" className="block cursor-pointer">{inner}</a>
+                  {item.link ? (
+                    <a href={item.link} target="_blank" rel="noopener noreferrer" className="block cursor-pointer">
+                      {inner}
+                    </a>
                   ) : inner}
                 </FadeIn>
               );
@@ -173,14 +208,19 @@ export default function Prensa() {
                 <button
                   onClick={() => setSelectedClipping(clipping)}
                   className="block w-full text-left group cursor-pointer"
-                  aria-label={`Ver recorte: ${clipping.title}`}
+                  aria-label={
+                    clipping.link
+                      ? `Ver recorte: ${clipping.title} — incluye enlace a la fuente online`
+                      : `Ver recorte: ${clipping.title}`
+                  }
                 >
+                  {/* object-top: los recortes verticales pierden el titular si se encuadran al centro. */}
                   <div className="img-zoom aspect-[4/3] relative bg-stone/10">
                     <Image
                       src={clipping.src}
                       alt={clipping.title}
                       fill
-                      className="object-cover"
+                      className="object-cover object-top"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/5 transition-colors duration-500" />
@@ -188,6 +228,9 @@ export default function Prensa() {
                   <div className="mt-4">
                     <h3 className="text-sm tracking-[0.1em] font-light">
                       {clipping.title}
+                      {clipping.link && (
+                        <span className="ml-2 text-[10px] tracking-[0.2em] uppercase text-stone">&rarr;</span>
+                      )}
                     </h3>
                   </div>
                 </button>
@@ -218,62 +261,12 @@ export default function Prensa() {
         </div>
       </section>
 
-      {/* Lightbox */}
-      <AnimatePresence>
-        {selectedClipping && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[100] bg-charcoal/95 flex items-center justify-center p-6"
-            onClick={() => setSelectedClipping(null)}
-            role="dialog"
-            aria-modal="true"
-            aria-label={`Recorte ampliado: ${selectedClipping.title}`}
-          >
-            <button
-              className="absolute top-6 right-6 text-cream/60 hover:text-cream transition-colors z-10 cursor-pointer p-2"
-              onClick={() => setSelectedClipping(null)}
-              aria-label="Cerrar imagen"
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1"
-                aria-hidden="true"
-              >
-                <line x1="4" y1="4" x2="20" y2="20" />
-                <line x1="20" y1="4" x2="4" y2="20" />
-              </svg>
-            </button>
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="relative max-w-4xl max-h-[85vh] w-full h-full"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image
-                src={selectedClipping.src}
-                alt={selectedClipping.title}
-                fill
-                className="object-contain"
-                sizes="90vw"
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-charcoal/80 to-transparent">
-                <h3 className="text-cream text-lg font-light tracking-wide">
-                  {selectedClipping.title}
-                </h3>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Lightbox
+        item={selectedClipping}
+        onClose={() => setSelectedClipping(null)}
+        labelPrefix="Recorte ampliado"
+        maxWidthClass="max-w-4xl"
+      />
     </>
   );
 }

@@ -3,12 +3,18 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/metadata";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
   display: "swap",
 });
+
+const SOCIAL_TITLE = "José Miguel Cárcamo — Escultor Chileno | Escultura en Piedra";
+const SOCIAL_DESCRIPTION =
+  "Más de 25 años dedicados a la escultura en piedra basalto. Obra pública en 14 países. " +
+  "Descubre su portafolio, proceso creativo y trayectoria internacional.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.jmcarcamo.cl"),
@@ -17,7 +23,8 @@ export const metadata: Metadata = {
     template: "%s | José Miguel Cárcamo",
   },
   description:
-    "Escultor chileno con más de 25 años dedicados a la escultura en piedra basalto. Obra pública internacional en más de 13 países.",
+    "Escultor chileno con más de 25 años dedicados a la escultura en piedra basalto. " +
+    "Obra pública internacional en 14 países.",
   keywords: [
     "escultor chileno",
     "escultura en piedra",
@@ -30,30 +37,21 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "José Miguel Cárcamo Fonseca" }],
   creator: "José Miguel Cárcamo Fonseca",
+  alternates: { canonical: SITE_URL },
   openGraph: {
-    title: "José Miguel Cárcamo — Escultor Chileno | Escultura en Piedra",
-    description:
-      "Más de 25 años dedicados a la escultura en piedra basalto. Obra pública en 13 países. Descubre su portafolio, proceso creativo y trayectoria internacional.",
-    url: "https://www.jmcarcamo.cl",
-    siteName: "José Miguel Cárcamo — Escultor",
+    title: SOCIAL_TITLE,
+    description: SOCIAL_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
     locale: "es_CL",
     type: "website",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Escultura monumental de José Miguel Cárcamo — Simposio Internacional Arabia Saudita",
-        type: "image/jpeg",
-      },
-    ],
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: "José Miguel Cárcamo — Escultor Chileno | Escultura en Piedra",
-    description:
-      "Más de 25 años dedicados a la escultura en piedra basalto. Obra pública en 13 países. Descubre su portafolio y trayectoria internacional.",
-    images: ["/og-image.jpg"],
+    title: SOCIAL_TITLE,
+    description: SOCIAL_DESCRIPTION,
+    images: [OG_IMAGE.url],
   },
   robots: {
     index: true,
@@ -94,6 +92,14 @@ const jsonLd = {
   ],
 };
 
+/**
+ * Sin JavaScript, framer-motion nunca reemplaza el `initial={{ opacity: 0 }}` que FadeIn
+ * emite como estilo inline, así que el HTML servido se ve en blanco. Estos selectores
+ * apuntan al estilo inline real (`opacity:0` y `opacity:0;transform:...`).
+ */
+const noScriptFallbackCss =
+  '[style*="opacity:0;"],[style$="opacity:0"]{opacity:1!important;transform:none!important}';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -106,11 +112,17 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <noscript>
+          <style dangerouslySetInnerHTML={{ __html: noScriptFallbackCss }} />
+        </noscript>
       </head>
       <body className="min-h-full flex flex-col bg-cream text-charcoal">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[999] focus:bg-charcoal focus:text-cream focus:px-4 focus:py-2 focus:text-sm"
+          className={
+            "sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[999] " +
+            "focus:bg-charcoal focus:text-cream focus:px-4 focus:py-2 focus:text-sm"
+          }
         >
           Ir al contenido principal
         </a>

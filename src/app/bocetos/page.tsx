@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import FadeIn from "@/components/FadeIn";
-import { motion, AnimatePresence } from "framer-motion";
+import Lightbox, { type LightboxItem } from "@/components/Lightbox";
 
 const sketches = [
   { src: "/images/boceto-proceso.jpeg", title: "Boceto", description: "Diseño inicial para escultura en piedra basalto" },
@@ -16,6 +16,12 @@ const sketches = [
 
 export default function Bocetos() {
   const [selectedSketch, setSelectedSketch] = useState<(typeof sketches)[0] | null>(null);
+
+  const lightboxItem: LightboxItem | null = selectedSketch && {
+    src: selectedSketch.src,
+    title: selectedSketch.title,
+    caption: selectedSketch.description,
+  };
 
   return (
     <>
@@ -52,7 +58,16 @@ export default function Bocetos() {
                   aria-label={`Ver boceto: ${sketch.title}`}
                 >
                   <div className="img-zoom aspect-[3/4] relative bg-stone/10">
-                    <Image src={sketch.src} alt={`${sketch.title} — ${sketch.description}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                    {/* Cualquiera de los 2 primeros puede ser el LCP según las columnas que muestre el viewport. */}
+                    <Image
+                      src={sketch.src}
+                      alt={`${sketch.title} — ${sketch.description}`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      loading={i < 2 ? "eager" : "lazy"}
+                      fetchPriority={i < 2 ? "high" : "auto"}
+                    />
                     <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/5 transition-colors duration-500" />
                   </div>
                   <div className="mt-4">
@@ -66,38 +81,7 @@ export default function Bocetos() {
         </div>
       </section>
 
-      <AnimatePresence>
-        {selectedSketch && (
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[100] bg-charcoal/95 flex items-center justify-center p-6"
-            onClick={() => setSelectedSketch(null)}
-            role="dialog" aria-modal="true" aria-label={`Boceto ampliado: ${selectedSketch.title}`}
-          >
-            <button
-              className="absolute top-6 right-6 text-cream/60 hover:text-cream transition-colors z-10 cursor-pointer p-2"
-              onClick={() => setSelectedSketch(null)} aria-label="Cerrar imagen"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true">
-                <line x1="4" y1="4" x2="20" y2="20" /><line x1="20" y1="4" x2="4" y2="20" />
-              </svg>
-            </button>
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="relative max-w-4xl max-h-[85vh] w-full h-full"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image src={selectedSketch.src} alt={selectedSketch.title} fill className="object-contain" sizes="90vw" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-charcoal/80 to-transparent">
-                <h3 className="text-cream text-lg font-light tracking-wide">{selectedSketch.title}</h3>
-                <p className="text-cream/60 text-sm mt-1">{selectedSketch.description}</p>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Lightbox item={lightboxItem} onClose={() => setSelectedSketch(null)} labelPrefix="Boceto ampliado" />
     </>
   );
 }

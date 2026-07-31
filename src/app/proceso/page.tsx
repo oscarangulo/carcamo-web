@@ -1,7 +1,18 @@
-"use client";
-
+import type { Metadata } from "next";
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
+import { pageMetadata } from "@/lib/metadata";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Proceso de Obra",
+  description:
+    "Del concepto a la materia: proceso de creación escultórica en piedra basalto. Boceto, desbaste, " +
+    "modelado, talla directa y montaje final.",
+  path: "/proceso",
+  socialDescription:
+    "Del concepto a la materia: proceso de creación escultórica en piedra basalto. Boceto, desbaste, " +
+    "modelado, talla directa y montaje.",
+});
 
 const steps = [
   { number: "01", title: "Boceto y Diseño", description: "El proceso comienza con el diseño en bocetos, definiendo escala y dimensiones. Cada trazo responde a una búsqueda personal en torno al lenguaje matérico, donde la forma nace de la intuición y el concepto." },

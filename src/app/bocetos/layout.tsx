@@ -1,19 +1,12 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Bocetos",
-  description: "Bocetos y estudios preparatorios. El origen de la forma: exploración de volumen, escala y proporciones para escultura en piedra.",
-  alternates: { canonical: "https://www.jmcarcamo.cl/bocetos" },
-  openGraph: {
-    title: "Bocetos | José Miguel Cárcamo — Escultor",
-    description: "Bocetos y estudios preparatorios. El origen de la forma: exploración de volumen, escala y proporciones para escultura en piedra.",
-    url: "https://www.jmcarcamo.cl/bocetos",
-  },
-  twitter: {
-    title: "Bocetos | José Miguel Cárcamo — Escultor",
-    description: "Bocetos y estudios preparatorios para escultura en piedra.",
-  },
-};
+  description:
+    "Bocetos y estudios preparatorios. El origen de la forma: exploración de volumen, escala y proporciones " +
+    "para escultura en piedra.",
+  path: "/bocetos",
+});
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return children;

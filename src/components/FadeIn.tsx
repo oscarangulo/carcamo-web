@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ReactNode } from "react";
 
 interface FadeInProps {
@@ -18,6 +18,12 @@ export default function FadeIn({
   className = "",
   duration = 0.7,
 }: FadeInProps) {
+  // El bloque prefers-reduced-motion de globals.css solo frena animaciones y transiciones CSS;
+  // framer-motion anima por JS, así que hay que consultar la preferencia acá.
+  const reduceMotion = useReducedMotion();
+
+  // Estos valores son la posición INICIAL: el elemento arranca desplazado y viaja hasta 0,
+  // por eso "left" parte en x positivo (se mueve hacia la izquierda).
   const directionOffset = {
     up: { y: 40, x: 0 },
     down: { y: -40, x: 0 },
@@ -26,12 +32,14 @@ export default function FadeIn({
     none: { y: 0, x: 0 },
   };
 
+  const offset = reduceMotion ? { y: 0, x: 0 } : directionOffset[direction];
+
   return (
     <motion.div
       initial={{
         opacity: 0,
-        y: directionOffset[direction].y,
-        x: directionOffset[direction].x,
+        y: offset.y,
+        x: offset.x,
       }}
       whileInView={{
         opacity: 1,
@@ -39,11 +47,15 @@ export default function FadeIn({
         x: 0,
       }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{
-        duration,
-        delay,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      }}
+      transition={
+        reduceMotion
+          ? { duration: 0.01, delay: 0 }
+          : {
+              duration,
+              delay,
+              ease: [0.25, 0.46, 0.45, 0.94],
+            }
+      }
       className={className}
     >
       {children}

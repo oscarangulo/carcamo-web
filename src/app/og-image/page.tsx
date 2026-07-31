@@ -1,32 +1,42 @@
-"use client";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Rig de captura OG (1200x630)",
+  description: "Página interna para generar la imagen social del sitio.",
+  robots: { index: false, follow: false },
+};
+
+// Oculta el chrome del sitio (nav, footer, skip-link, overlays de dev) para que la
+// captura salga exactamente en 1200x630 sin recortes.
+const captureCss = `
+  [data-nextjs-dialog-overlay],
+  [data-nextjs-dialog],
+  nextjs-portal,
+  #__next-build-indicator,
+  header,
+  footer,
+  nav,
+  #main-content > :not(.og-wrapper),
+  a[href="#main-content"] {
+    display: none !important;
+  }
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    min-height: auto !important;
+    background: #1a1a1a !important;
+  }
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+`;
 
 export default function OGImage() {
   return (
     <>
-      <style jsx global>{`
-        [data-nextjs-dialog-overlay],
-        [data-nextjs-dialog],
-        nextjs-portal,
-        #__next-build-indicator,
-        header,
-        footer,
-        nav,
-        #main-content > :not(.og-wrapper),
-        a[href="#main-content"] {
-          display: none !important;
-        }
-        body {
-          margin: 0 !important;
-          padding: 0 !important;
-          overflow: hidden !important;
-          min-height: auto !important;
-          background: #1a1a1a !important;
-        }
-        main {
-          padding: 0 !important;
-          margin: 0 !important;
-        }
-      `}</style>
+      <style dangerouslySetInnerHTML={{ __html: captureCss }} />
       <div
         className="og-wrapper"
         style={{
